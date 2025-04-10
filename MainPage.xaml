@@ -2,11 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.ActivityPage"
-             Title="ActivityPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Login">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20"
+            VerticalOptions="Center">
+
+            <!-- App Title -->
+            <Label 
+                Text="Welcome to MyApp"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <!-- Username Entry -->
+            <Entry 
+                x:Name="UsernameEntry"
+                Placeholder="Username"
+                Keyboard="Text"
+                HorizontalOptions="Fill" />
+
+            <!-- Password Entry -->
+            <Entry 
+                x:Name="PasswordEntry"
+                Placeholder="Password"
+                IsPassword="True"
+                Keyboard="Text"
+                HorizontalOptions="Fill" />
+
+            <!-- Login Button -->
+            <Button 
+                Text="Login"
+                x:Name="LoginButton"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="5"
+                HorizontalOptions="Fill" />
+
+            <!-- Password Reset Button -->
+            <Button 
+                Text="Forgot Password?"
+                x:Name="ResetPasswordButton"
+                BackgroundColor="Transparent"
+                TextColor="#007AFF"
+                FontAttributes="Italic"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
