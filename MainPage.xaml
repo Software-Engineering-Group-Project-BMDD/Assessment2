@@ -9,21 +9,63 @@
             Spacing="25">
 
             <StackLayout>
-                <Label Text="Table 1" />
+                <Label Text="Water Quality" />
                 <Picker x:Name="Table1Picker" />
                 <CollectionView x:Name="Table1CollectionView" />
+                <Grid ColumnDefinitions="*,*,*"
+                      RowDefinitions="Auto,Auto,Auto">
+                    <Label Text="Column 1" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Column 2" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Column 3" Grid.Row="0" Grid.Column="2" />
+
+                    <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="2" />
+
+                    <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="2" />
+                </Grid>
             </StackLayout>
 
             <StackLayout>
-                <Label Text="Table 2" />
+                <Label Text="Air Quality" />
                 <Picker x:Name="Table2Picker" />
                 <CollectionView x:Name="Table2CollectionView" />
+                <Grid ColumnDefinitions="*,*,*"
+                      RowDefinitions="Auto,Auto,Auto">
+                    <Label Text="Column 1" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Column 2" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Column 3" Grid.Row="0" Grid.Column="2" />
+
+                    <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="2" />
+
+                    <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="2" />
+                </Grid>
             </StackLayout>
 
             <StackLayout>
-                <Label Text="Table 3" />
+                <Label Text="Meterological Data" />
                 <Picker x:Name="Table3Picker" />
                 <CollectionView x:Name="Table3CollectionView" />
+                <Grid ColumnDefinitions="*,*,*"
+                      RowDefinitions="Auto,Auto,Auto">
+                    <Label Text="Column 1" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Column 2" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Column 3" Grid.Row="0" Grid.Column="2" />
+
+                    <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="2" />
+
+                    <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="2" />
+                </Grid>
             </StackLayout>
 
         </VerticalStackLayout>

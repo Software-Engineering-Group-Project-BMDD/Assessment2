@@ -9,6 +9,8 @@
             InitializeComponent();
         }
 
+        public Button CounterBtn { get; private set; }
+
         private void OnCounterClicked(object sender, EventArgs e)
         {
             count++;
@@ -21,5 +23,4 @@
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
-
 }
