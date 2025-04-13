@@ -18,14 +18,14 @@
 
             <!-- Username Entry -->
             <Entry 
-                x:Name="UsernameEntry"
+                x:Name="Username_Txtbox"
                 Placeholder="Username"
                 Keyboard="Text"
                 HorizontalOptions="Fill" />
 
             <!-- Password Entry -->
             <Entry 
-                x:Name="PasswordEntry"
+                x:Name="Password_Txtbox"
                 Placeholder="Password"
                 IsPassword="True"
                 Keyboard="Text"
@@ -34,7 +34,7 @@
             <!-- Login Button -->
             <Button 
                 Text="Login"
-                x:Name="LoginButton"
+                x:Name="Login_Btn"
                 BackgroundColor="#007AFF"
                 TextColor="White"
                 CornerRadius="5"
@@ -43,7 +43,7 @@
             <!-- Password Reset Button -->
             <Button 
                 Text="Forgot Password?"
-                x:Name="ResetPasswordButton"
+                x:Name="Reset_Password_Btn"
                 BackgroundColor="Transparent"
                 TextColor="#007AFF"
                 FontAttributes="Italic"
