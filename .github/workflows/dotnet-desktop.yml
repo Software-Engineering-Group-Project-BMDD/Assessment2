@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: MauiApp1.sin
+      Solution_Name: MauiApp1.s1n
       Test_Project_Path:     Assessment2/MauiApp1.sln
       Wap_Project_Directory: your-wap-project-directory-name
       Wap_Project_Path: your-wap-project-path
