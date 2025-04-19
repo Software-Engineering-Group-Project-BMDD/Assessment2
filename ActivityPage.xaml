@@ -1,145 +1,146 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.MainPage">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="MauiApp1.MainPage">  
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+   <ScrollView>  
+       <VerticalStackLayout  
+           Padding="30,0"  
+           Spacing="25">  
 
-            <!-- Water Quality Section -->
-            <ContentView>
-                <VerticalStackLayout>
-                    <Label Text="Water Quality" />
-                    <Button Text="View All Records" Clicked="OnCounterClicked"></Button>
-                    <Picker x:Name="Table1Picker" />
-                    <CollectionView x:Name="WaterQualityTb" />
-                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"
-                          RowDefinitions="Auto,Auto,Auto">
-                        <!-- Header Row -->
-                        <Label Text="Date" Grid.Row="0" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Time" Grid.Row="0" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Nitrate (mg l-1)" Grid.Row="0" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Nitrite (mg l-1)" Grid.Row="0" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Phosphate (mg l-1)" Grid.Row="0" Grid.Column="8" />
+           <!-- Water Quality Section -->  
+           <ContentView>  
+               <VerticalStackLayout>  
+                   <Label Text="Water Quality" />  
+                   <Button Text="View All Records" Clicked="OnCounterClicked" x:Name="ViewRecordBtn"></Button>  
+                   <Button Text="Manage sensor account" Clicked="OnCounterClicked" x:Name="ManageSensorBtn"></Button>  
+                   <Picker x:Name="Table1Picker" />  
+                   <CollectionView x:Name="WaterQualityTb" />  
+                   <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
+                         RowDefinitions="Auto,Auto,Auto">  
+                       <!-- Header Row -->  
+                       <Label Text="Date" Grid.Row="0" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Time" Grid.Row="0" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Nitrate (mg l-1)" Grid.Row="0" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Nitrite (mg l-1)" Grid.Row="0" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Phosphate (mg l-1)" Grid.Row="0" Grid.Column="8" />  
 
-                        <!-- Example Data Rows -->
-                        <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />
+                       <!-- Example Data Rows -->  
+                       <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />  
 
-                        <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />
-                    </Grid>
-                </VerticalStackLayout>
-            </ContentView>
+                       <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />  
+                   </Grid>  
+               </VerticalStackLayout>  
+           </ContentView>  
 
-            <!-- Air Quality Section -->
-            <ContentView>
-                <VerticalStackLayout>
-                    <Label Text="Air Quality" />
-                    <Button Text="View All Records" Clicked="OnCounterClicked"></Button>
-                    <Picker x:Name="Table2Picker" />
-                    <CollectionView x:Name="AirQualityTb" />
-                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"
-                          RowDefinitions="Auto,Auto,Auto">
-                        <!-- Header Row -->
-                        <Label Text="Date" Grid.Row="0" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Time" Grid.Row="0" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="PM2.5 (µg/m³)" Grid.Row="0" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="PM10 (µg/m³)" Grid.Row="0" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="CO (ppm)" Grid.Row="0" Grid.Column="8" />
+           <!-- Air Quality Section -->  
+           <ContentView>  
+               <VerticalStackLayout>  
+                   <Label Text="Air Quality" />  
+                   <Button Text="View All Records" Clicked="OnCounterClicked"></Button>  
+                   <Picker x:Name="Table2Picker" />  
+                   <CollectionView x:Name="AirQualityTb" />  
+                   <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
+                         RowDefinitions="Auto,Auto,Auto">  
+                       <!-- Header Row -->  
+                       <Label Text="Date" Grid.Row="0" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Time" Grid.Row="0" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="PM2.5 (µg/m³)" Grid.Row="0" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="PM10 (µg/m³)" Grid.Row="0" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="CO (ppm)" Grid.Row="0" Grid.Column="8" />  
 
-                        <!-- Example Data Rows -->
-                        <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />
+                       <!-- Example Data Rows -->  
+                       <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />  
 
-                        <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />
-                    </Grid>
-                </VerticalStackLayout>
-            </ContentView>
+                       <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />  
+                   </Grid>  
+               </VerticalStackLayout>  
+           </ContentView>  
 
-            <!-- Meteorological Data Section -->
-            <ContentView>
-                <VerticalStackLayout>
-                    <Label Text="Meteorological Data" />
-                    <Button Text="View All Records" Clicked="OnCounterClicked"></Button>
-                    <Picker x:Name="Table3Picker" />
-                    <CollectionView x:Name="MeteorologicalTb" />
-                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"
-                          RowDefinitions="Auto,Auto,Auto">
-                        <!-- Header Row -->
-                        <Label Text="Date" Grid.Row="0" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Time" Grid.Row="0" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Temperature (°C)" Grid.Row="0" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Humidity (%)" Grid.Row="0" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Wind Speed (m/s)" Grid.Row="0" Grid.Column="8" />
+           <!-- Meteorological Data Section -->  
+           <ContentView>  
+               <VerticalStackLayout>  
+                   <Label Text="Meteorological Data" />  
+                   <Button Text="View All Records" Clicked="OnCounterClicked"></Button>  
+                   <Picker x:Name="Table3Picker" />  
+                   <CollectionView x:Name="MeteorologicalTb" />  
+                   <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
+                         RowDefinitions="Auto,Auto,Auto">  
+                       <!-- Header Row -->  
+                       <Label Text="Date" Grid.Row="0" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Time" Grid.Row="0" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Temperature (°C)" Grid.Row="0" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Humidity (%)" Grid.Row="0" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="0" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Wind Speed (m/s)" Grid.Row="0" Grid.Column="8" />  
 
-                        <!-- Example Data Rows -->
-                        <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />
+                       <!-- Example Data Rows -->  
+                       <Label Text="Row 1, Col 1" Grid.Row="1" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 2" Grid.Row="1" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 3" Grid.Row="1" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 4" Grid.Row="1" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 1, Col 5" Grid.Row="1" Grid.Column="8" />  
 
-                        <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />
-                        <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />
-                        <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />
-                        <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />
-                        <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />
-                        <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />
-                    </Grid>
-                </VerticalStackLayout>
-            </ContentView>
+                       <Label Text="Row 2, Col 1" Grid.Row="2" Grid.Column="0" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="1" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 2" Grid.Row="2" Grid.Column="2" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="3" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 3" Grid.Row="2" Grid.Column="4" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="5" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 4" Grid.Row="2" Grid.Column="6" />  
+                       <BoxView BackgroundColor="Gray" Grid.Row="2" Grid.Column="7" WidthRequest="1" />  
+                       <Label Text="Row 2, Col 5" Grid.Row="2" Grid.Column="8" />  
+                   </Grid>  
+               </VerticalStackLayout>  
+           </ContentView>  
 
-        </VerticalStackLayout>
-    </ScrollView>
+       </VerticalStackLayout>  
+   </ScrollView>  
 </ContentPage>

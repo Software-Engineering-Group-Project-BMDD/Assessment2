@@ -66,6 +66,10 @@ namespace MauiApp1
                         using var connection = new SqliteConnection(ConnectionString);
                         connection.Open();
                         CreateTables(connection);
+
+                        // Add default roles and users
+                        AddDefaultRoles(connection);
+                        AddDefaultUsers(connection);
                     }
                 }
                 catch (Exception ex)
@@ -97,6 +101,7 @@ namespace MauiApp1
                         L_Name TEXT NOT NULL,
                         Address TEXT,
                         Role INTEGER,
+                        Password TEXT NOT NULL,
                         Incidence_id INTEGER,
                         FOREIGN KEY (Role) REFERENCES Role(Role_Id),
                         FOREIGN KEY (Incidence_id) REFERENCES Incidence(incidece_id)
@@ -455,6 +460,71 @@ namespace MauiApp1
                 WHERE sensor_id = @sensor_id 
                 ORDER BY timestamp DESC",
                 new Dictionary<string, object> { { "@sensor_id", sensorId } });
+        }
+
+        /// <summary>
+        /// Hashes a password using a secure cryptographic algorithm
+        /// </summary>
+        private static string HashPassword(string password)
+        {
+            using var sha256 = System.Security.Cryptography.SHA256.Create();
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hash = sha256.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
+
+        /// <summary>
+        /// Adds default roles to the database if they do not already exist
+        /// </summary>
+        private static void AddDefaultRoles(SqliteConnection connection)
+        {
+            var roles = new[] { "Admin", "Environmental Scientist", "Operational Manager" };
+
+            foreach (var role in roles)
+            {
+                var parameters = new Dictionary<string, object> { { "@role_name", role } };
+                ExecuteNonQueryWithConnection(
+                    "INSERT OR IGNORE INTO Role (Role_name) VALUES (@role_name)",
+                    parameters,
+                    connection);
+            }
+        }
+
+        /// <summary>
+        /// Adds default user accounts to the database
+        /// </summary>
+        private static void AddDefaultUsers(SqliteConnection connection)
+        {
+            var users = new[]
+            {
+                new { FirstName = "Admin", LastName = "User", Address = "Admin Address", RoleName = "Admin", Password = "Admin123" },
+                new { FirstName = "Env", LastName = "Scientist", Address = "Env Address", RoleName = "Environmental Scientist", Password = "Env123" },
+                new { FirstName = "Op", LastName = "Manager", Address = "Op Address", RoleName = "Operational Manager", Password = "Op123" }
+            };
+
+            foreach (var user in users)
+            {
+                var roleId = ExecuteScalar(
+                    "SELECT Role_Id FROM Role WHERE Role_name = @role_name",
+                    new Dictionary<string, object> { { "@role_name", user.RoleName } });
+
+                if (roleId != null)
+                {
+                    var parameters = new Dictionary<string, object>
+                    {
+                        { "@f_name", user.FirstName },
+                        { "@l_name", user.LastName },
+                        { "@address", user.Address },
+                        { "@role", roleId },
+                        { "@password", HashPassword(user.Password) }
+                    };
+
+                    ExecuteNonQueryWithConnection(
+                        "INSERT OR IGNORE INTO Users (F_Name, L_Name, Address, Role, Password) VALUES (@f_name, @l_name, @address, @role, @password)",
+                        parameters,
+                        connection);
+                }
+            }
         }
     }
 }
