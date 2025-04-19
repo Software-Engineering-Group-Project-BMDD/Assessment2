@@ -26,6 +26,11 @@
                 <CollectionView x:Name="Table3CollectionView" />
             </StackLayout>
 
+            <Button Text="Go to New Page 1" Clicked="OnNewPage1Clicked" />
+            <Button Text="Go to Schedule Maintenance" Clicked="OnScheduleMaintenanceClicked" />
+            <Button Text="Go to Manage Access" Clicked="OnManageAccessClicked" />
+
+
         </VerticalStackLayout>
     </ScrollView>
 
