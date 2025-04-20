@@ -58,7 +58,7 @@
                    <Label Text="Air Quality" />  
                    
                    <Picker x:Name="Table2Picker" />  
-                   <CollectionView x:Name="AirQualityTb" />  
+                   <CollectionView x:Name="airQualityTb" />  
                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
                          RowDefinitions="Auto,Auto,Auto">  
                        <!-- Header Row -->  
