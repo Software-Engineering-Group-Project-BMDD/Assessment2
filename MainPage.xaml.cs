@@ -87,38 +87,39 @@ namespace MauiApp1
                 return false;
             }
             return true;
-        } 
+        }
         #endregion
 
 
-        public void Login_Btn_Clicked(object sender, EventArgs e)
+        public async void Login_Btn_Clicked(object sender, EventArgs e)
         {
             var username = GetUsername();
             var password = GetPassword();
 
-            // Validate the input with the correct arguments
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                await DisplayAlert("Error", "Please enter both username and password.", "OK");
+                return;
+            }
+
             if (!ValidateInput(username, password))
             {
                 return;
             }
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                DisplayAlert("Error", "Please enter both username and password.", "OK");
-                return;
-            }
-
-            // Call the method to check if the username exists in the database  
-            var userExists = ValUsernameInDatabaseAsync(username).Result;
+            bool userExists = await ValUsernameInDatabaseAsync(username);
             if (userExists)
             {
-                DisplayAlert("Success", "User exists in the database.", "OK");
+                await DisplayAlert("Success", "User exists in the database.", "OK");
+                // Navigate to ActivityPage.xaml
+                await Navigation.PushAsync(new ActivityPage());
             }
             else
             {
-                DisplayAlert("Error", "User does not exist in the database.", "OK");
+                await DisplayAlert("Error", "User does not exist in the database.", "OK");
             }
         }
+
         // Method to check if username exists in the database  
         public async void CheckDatabaseConnection()
         {

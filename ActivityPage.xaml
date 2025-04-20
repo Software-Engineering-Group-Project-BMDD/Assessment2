@@ -12,8 +12,7 @@
            <ContentView>  
                <VerticalStackLayout>  
                    <Label Text="Water Quality" />  
-                   <Button Text="View All Records" Clicked="OnCounterClicked" x:Name="ViewRecordBtn"></Button>  
-                   <Button Text="Manage sensor account" Clicked="OnCounterClicked" x:Name="ManageSensorBtn"></Button>  
+                  
                    <Picker x:Name="Table1Picker" />  
                    <CollectionView x:Name="WaterQualityTb" />  
                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
@@ -57,7 +56,7 @@
            <ContentView>  
                <VerticalStackLayout>  
                    <Label Text="Air Quality" />  
-                   <Button Text="View All Records" Clicked="OnCounterClicked"></Button>  
+                   
                    <Picker x:Name="Table2Picker" />  
                    <CollectionView x:Name="AirQualityTb" />  
                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
@@ -101,7 +100,7 @@
            <ContentView>  
                <VerticalStackLayout>  
                    <Label Text="Meteorological Data" />  
-                   <Button Text="View All Records" Clicked="OnCounterClicked"></Button>  
+                   
                    <Picker x:Name="Table3Picker" />  
                    <CollectionView x:Name="MeteorologicalTb" />  
                    <Grid ColumnDefinitions="Auto,1,Auto,1,Auto,1,Auto,1,Auto"  
