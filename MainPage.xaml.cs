@@ -14,13 +14,13 @@ namespace MauiApp1
             _dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
         }
         
-        public Entry Username_Txtbox;
+        //public Entry Username_Txtbox;
 
-        public Entry Password_Txtbox;
+        //public Entry Password_Txtbox;
 
-        public Button Login_Btn;
+        //public Button Login_Btn;
 
-        public Entry Password_Btn;
+        //public Entry Password_Btn;
 
         // Method to get the text from the Username Entry  
         public string GetUsername()
