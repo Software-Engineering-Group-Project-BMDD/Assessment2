@@ -526,5 +526,9 @@ namespace MauiApp1
                 }
             }
         }
+        public static void initializeFullAirQuality()
+        {
+            
+        }
     }
 }
