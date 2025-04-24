@@ -9,9 +9,11 @@ public partial class SensorStatus : ContentPage
 		InitializeComponent();
 		_dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
 
+		var ia =  DatabaseSetup.initializeFullAirQuality();
 
 
-		
+		tester.Text = ia;
+
 	}
 
 	
