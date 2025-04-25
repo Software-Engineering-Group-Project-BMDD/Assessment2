@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new SensorStatus();
+            MainPage = new MainPage();
         }
     }
 }
