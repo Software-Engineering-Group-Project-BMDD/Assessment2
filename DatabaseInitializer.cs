@@ -11,6 +11,8 @@ namespace MauiApp1
         {
             var dbPath = DatabaseConnectionManager.GetDatabasePath();
 
+
+
             if (!File.Exists(dbPath))
             {
                 try
@@ -20,6 +22,7 @@ namespace MauiApp1
 
                     using var connection = DatabaseConnectionManager.GetConnection();
                     CreateTables(connection);
+                    CreateSensorTables(connection);
                     SeedDefaultData(connection);
                 }
                 catch (Exception ex)
@@ -51,6 +54,43 @@ namespace MauiApp1
                 )");
 
                 // Add other table creation queries here...
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Failed to create database tables", ex);
+            }
+        }
+        
+        private static void CreateSensorTables(SqliteConnection connection)
+        {
+            // will attempt to create the tables for sensor, and sensor reading
+            try
+            {
+                // Create Sensor table
+                ExecuteNonQuery(connection,
+                    @"CREATE TABLE IF NOT EXISTS Sensor (
+                        Sensor_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Sensor_Quantity TEXT,
+                        Symbol TEXT,
+                        Unit TEXT,
+                        Unit_Desc TEXT,
+                        Frequency TEXT,
+                        SafeLevel REAL,
+                        Longitude REAL,
+                        Latitude REAL,
+                        sensor_type TEXT
+                    )");
+
+                // Create Sensor_reading table
+                ExecuteNonQuery(connection,
+                    @"CREATE TABLE IF NOT EXISTS Sensor_reading (
+                        reading_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        sensor_id INTEGER,
+                        sensor_value REAL,
+                        timestamp TEXT,
+                        sensor_setpoint REAL,
+                        FOREIGN KEY (sensor_id) REFERENCES Sensor(Sensor_id)
+                    )");
             }
             catch (Exception ex)
             {
