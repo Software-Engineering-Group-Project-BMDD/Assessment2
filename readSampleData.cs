@@ -103,8 +103,6 @@ public class readSampleData
             Task<List<string>> task = readCSV(DataFile);
             List<string> lines = task.Result;
 
-
-
             // the first parts of the sample data are data about the sensor itself
             var siteName = lines.ElementAt(2).Split(',')[1];
             var latitude = lines.ElementAt(3).Split(',')[1];
@@ -113,8 +111,6 @@ public class readSampleData
             var zone = lines.ElementAt(6).Split(',')[1];
             var agglomeration = lines.ElementAt(7).Split(',')[1];
             var localAuthority = lines.ElementAt(8).Split(',')[1];
-
-
 
             List<string> Metadata = readMeta();
             // lines 2 - 5 / index 1 - 4 are about air quality sensors
@@ -148,6 +144,116 @@ public class readSampleData
                     DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
                     DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
 
+
+                }
+            }
+            return lines.ElementAt(10);
+    }
+    public static string initializeFullWaterQuality()
+    {
+            // get air quality data from sample data
+            string path = FileSystem.AppDataDirectory;
+            var DataFile = @"Data/Water_Quality.csv";
+
+
+            Task<List<string>> task = readCSV(DataFile);
+            List<string> lines = task.Result;
+
+            // the first parts of the sample data are data about the sensor itself
+            var siteName = lines.ElementAt(0).Split(',')[1];
+            var samplePeriod = lines.ElementAt(1).Split(',')[1];
+            var location = lines.ElementAt(3).Split(',')[1]; // water quality has one location value,
+            var latitude = "";
+            var longitude = "";
+
+
+            List<string> Metadata = readMeta();
+            // lines 6 - 10 / index 5 - 9 are about water quality sensors
+
+            
+            metaToDatabaseSensor(Metadata, 5, double.Parse(longitude),double.Parse(latitude)); // Nitrate2
+            metaToDatabaseSensor(Metadata, 6, double.Parse(longitude),double.Parse(latitude)); // Nitrate3
+            metaToDatabaseSensor(Metadata, 7, double.Parse(longitude),double.Parse(latitude)); // Phosphate
+            metaToDatabaseSensor(Metadata, 8, double.Parse(longitude),double.Parse(latitude)); // Escherichia
+            metaToDatabaseSensor(Metadata, 9, double.Parse(longitude),double.Parse(latitude)); // intestinal enterococci
+
+
+            // this produces an sensor reading for the sensor reading table
+            // the air quality sample data has its actual readings start at line 11, or index 10
+            // it stores these values Date	Time	Nitrate (mg l-1)	Nitrite <mg l-1)	Phosphate (mg l-1)	EC (cfu/100ml)
+
+            //                         0   1            2                 3                4                           5
+            int count = 0;
+            foreach (var line in lines)
+            {
+                if (count >= 10)
+                {
+                    var values = line.Split(',');
+
+                    string dateString = values[0] + " " + values[1];
+                    string format = "dd/MM/yyyy HH:mm:ss"; // day/month/year 24-hour format
+                    CultureInfo provider = CultureInfo.InvariantCulture;
+
+                    DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
+                    // here is where we add the reading to the reading table in the database
+                    DatabaseRepository.AddSensorReading(4, double.Parse(values[2]), parsedDate, 0); // Nitrate2
+                    DatabaseRepository.AddSensorReading(5, double.Parse(values[3]), parsedDate, 0); // Nitrate3
+                    DatabaseRepository.AddSensorReading(6, double.Parse(values[4]), parsedDate, 0); // Phos
+                    DatabaseRepository.AddSensorReading(7, double.Parse(values[5]), parsedDate, 0); // Esch
+                    // DatabaseRepository.AddSensorReading(8, double.Parse(values[5]), parsedDate, 0); // Intestinal... though the sample data doesnt seem to actually have data for this
+
+
+                }
+            }
+            return lines.ElementAt(10);
+    }
+    public static string initializeFullWeatherData()
+    {
+            // get air quality data from sample data
+            string path = FileSystem.AppDataDirectory;
+            var DataFile = @"Data/Weather.csv";
+
+
+            Task<List<string>> task = readCSV(DataFile);
+            List<string> lines = task.Result;
+
+            // the first parts of the sample data are data about the sensor itself
+            var latitude = lines.ElementAt(1).Split(',')[0];
+            var longitude = lines.ElementAt(1).Split(',')[1];
+
+
+            List<string> Metadata = readMeta();
+            // lines 11 - 14 / index 10 - 13 are about weather sensors
+
+            
+            metaToDatabaseSensor(Metadata, 10, double.Parse(longitude),double.Parse(latitude)); // air temp
+            metaToDatabaseSensor(Metadata, 11, double.Parse(longitude),double.Parse(latitude)); // humidity
+            metaToDatabaseSensor(Metadata, 12, double.Parse(longitude),double.Parse(latitude)); // wind speed
+            metaToDatabaseSensor(Metadata, 13, double.Parse(longitude),double.Parse(latitude)); // wind direction
+
+
+            // this produces an sensor reading for the sensor reading table
+            // the air quality sample data has its actual readings start at line 11, or index 10
+            // it stores these values time	temperature_2m (¬∞C)	relative_humidity_2m (%)	wind_speed_10m (m/s)	wind_direction_10m (¬∞)	
+
+            //                         0        1                        2                              3                  4  
+            int count = 0;
+            foreach (var line in lines)
+            {
+                if (count >= 10)
+                {
+                    var values = line.Split(',');
+
+                    string dateString = values[0];
+                    string format = "yyyy-MM-ddTHH:mm"; 
+                    CultureInfo provider = CultureInfo.InvariantCulture;
+
+                    DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
+                    // here is where we add the reading to the reading table in the database
+                    DatabaseRepository.AddSensorReading(9, double.Parse(values[1]), parsedDate, 0); // temp
+                    DatabaseRepository.AddSensorReading(10, double.Parse(values[2]), parsedDate, 0); // humid
+                    DatabaseRepository.AddSensorReading(11, double.Parse(values[3]), parsedDate, 0); // wind speed
+                    DatabaseRepository.AddSensorReading(12, double.Parse(values[4]), parsedDate, 0); // wind dir
 
                 }
             }

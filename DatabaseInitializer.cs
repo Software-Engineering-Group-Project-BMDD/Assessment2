@@ -91,6 +91,11 @@ namespace MauiApp1
                         sensor_setpoint REAL,
                         FOREIGN KEY (sensor_id) REFERENCES Sensor(Sensor_id)
                     )");
+
+                // must be done in this order!
+                readSampleData.initializeFullAirQuality();
+                readSampleData.initializeFullWaterQuality();
+                readSampleData.initializeFullWeatherData();
             }
             catch (Exception ex)
             {
