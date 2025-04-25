@@ -529,54 +529,5 @@ namespace MauiApp1
         }
           
 
-        static async Task<List<string>> readCSV(string DataFile)
-        {
-            List<string> lines = new List<string>();
-            
-            try
-            {
-                // Open the source file
-                using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(DataFile);
-                using StreamReader sr = new(fileStream);
-
-                    string line;  
-                    
-                    while ((line = sr.ReadLine()) != null)  
-                    {  
-                        Console.WriteLine(line);  
-                        lines.Add(line);
-            
-             
-                    }  
-
-                    return lines;  
-            }  
-            catch (Exception ex)  
-            { 
-                Console.WriteLine(ex.Message); 
-            }  
-            return lines;  
-        } 
         
-
-        public static string initializeFullAirQuality()
-        {
-            List<string> listA = new List<string>();
-            List<string> listB = new List<string>();
-
-            string path = FileSystem.AppDataDirectory;
-            var DataFile = @"Data/Air_quality.csv";
-
-
-            Task<List<string>> task = readCSV(DataFile);
-            List<string> lines = task.Result;
-
-            foreach (var line in lines)
-            {
-                var values = line.Split(',');
-                Console.WriteLine($"Column1: {values[0]}, Column2: {values[1]}");
-            }
-            return lines.First();
-        }
-    }
 }
