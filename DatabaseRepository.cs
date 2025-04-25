@@ -20,6 +20,25 @@ namespace MauiApp1
             return Convert.ToInt32(ExecuteScalar("SELECT last_insert_rowid()"));
         }
 
+
+        public static int AddSensorReading(int sensorId, double sensorValue, DateTime timestamp, double setpoint)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "@sensor_id", sensorId },
+                { "@sensor_value", sensorValue },
+                { "@timestamp", timestamp.ToString("yyyy-MM-dd HH:mm:ss") },
+                { "@sensor_setpoint", setpoint }
+            };
+
+            ExecuteNonQuery(
+                "INSERT INTO Sensor_reading (sensor_id, sensor_value, timestamp, sensor_setpoint) " +
+                "VALUES (@sensor_id, @sensor_value, @timestamp, @sensor_setpoint)",
+                parameters);
+
+            return Convert.ToInt32(ExecuteScalar("SELECT last_insert_rowid()"));
+        }
+
         public static SqliteDataReader GetUsersWithRoles()
         {
             return ExecuteReader(@"SELECT u.User_id, u.F_Name, u.L_Name, u.Address, r.Role_name 
