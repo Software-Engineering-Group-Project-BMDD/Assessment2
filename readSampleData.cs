@@ -1,4 +1,8 @@
 using System;
+using Java.Sql;
+using System.Globalization;
+using Xamarin.Google.ErrorProne.Annotations;
+using System.Net.Sockets;
 
 namespace MauiApp1;
 
@@ -68,7 +72,26 @@ public class readSampleData
             return lines;
     }
 
+    public static void metaToDatabaseSensor(List<string> metadata, int index, double longitude, double latitude)
+    {
+        
 
+        var line = metadata.ElementAt(index);
+
+        var values = line.Split(',');
+
+        string Quantity = values[1];
+        string Symbol = values[2];
+        string Unit = values[3];
+        string uDesc = values[4];
+        string MeasurementFrequency = values[5];
+        double SafeLevel = double.Parse(values[6]);
+        string Sensor = values[8]; 
+
+
+        DatabaseRepository.AddSensor(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
+
+    }
 
     public static string initializeFullAirQuality()
     {
@@ -96,6 +119,12 @@ public class readSampleData
             List<string> Metadata = readMeta();
             // lines 2 - 5 / index 1 - 4 are about air quality sensors
 
+            
+            metaToDatabaseSensor(Metadata, 1, double.Parse(longitude),double.Parse(latitude)); // nitrogen sensor
+            metaToDatabaseSensor(Metadata, 2, double.Parse(longitude),double.Parse(latitude)); // sulphur dioxide sensor
+            metaToDatabaseSensor(Metadata, 3, double.Parse(longitude),double.Parse(latitude)); // pm2.5 sensor
+            metaToDatabaseSensor(Metadata, 4, double.Parse(longitude),double.Parse(latitude)); // pm10 sensor
+
 
             // this produces an sensor reading for the sensor reading table
             // the air quality sample data has its actual readings start at line 11, or index 10
@@ -108,9 +137,18 @@ public class readSampleData
                 {
                     var values = line.Split(',');
 
+                    string dateString = values[0] + " " + values[1];
+                    string format = "dd/MM/yyyy HH:mm:ss"; // day/month/year 24-hour format
+                    CultureInfo provider = CultureInfo.InvariantCulture;
+
+                    DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
+                    // here is where we add the reading to the reading table in the database
+                    DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
+                    DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
+                    DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
+                    DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
 
 
-                    Console.WriteLine($"Column1: {values[0]}, Column2: {values[1]}");
                 }
             }
             return lines.ElementAt(10);

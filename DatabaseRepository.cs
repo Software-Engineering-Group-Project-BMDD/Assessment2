@@ -21,6 +21,38 @@ namespace MauiApp1
         }
 
 
+         /// <summary>
+        /// Adds a new sensor to the database
+        /// </summary>
+        /// 
+        /// 
+       
+        public static int AddSensor(string Sensor_Quantity, string Symbol, string unit, string Unit_Desc, string frequency, double SafeLevel, double longitude, double latitude, string sensorType)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "@sensor_Quantity", Sensor_Quantity},
+                { "@symbol", Symbol},
+                { "@unit", unit},
+                { "@unit_desc", Unit_Desc},
+                { "@frequency", frequency},
+                { "@safeLevel", SafeLevel},
+                { "@longitude", longitude },
+                { "@latitude", latitude },
+                { "@sensor_type", sensorType }
+            };
+
+            ExecuteNonQuery(
+                @"INSERT INTO Sensor (Sensor_Quantity, Symbol, Unit, Unit_Desc, Frequency, SafeLevel, Longitude, Latitude, sensor_type) 
+                VALUES (@sensor_Quantity, @symbol, @unit, @unit_desc, @frequency, @safeLevel, @longitude, @latitude, @sensor_type)",
+                parameters);
+
+            return Convert.ToInt32(ExecuteScalar("SELECT last_insert_rowid()"));
+        }
+
+        /// <summary>
+        /// Adds a new sensor reading to the database
+        /// </summary>
         public static int AddSensorReading(int sensorId, double sensorValue, DateTime timestamp, double setpoint)
         {
             var parameters = new Dictionary<string, object>
