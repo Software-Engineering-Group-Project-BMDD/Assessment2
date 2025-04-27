@@ -9,8 +9,8 @@ namespace MauiApp1;
 public class readSampleData
 {
     	
-    static async Task<List<string>> readCSV(string DataFile)
-        {
+    public static async Task<List<string>> readCSV(string DataFile)
+    {
             List<string> lines = new List<string>();
             
             try
@@ -136,13 +136,19 @@ public class readSampleData
                     string dateString = values[0] + " " + values[1];
                     string format = "dd/MM/yyyy HH:mm:ss"; // day/month/year 24-hour format
                     CultureInfo provider = CultureInfo.InvariantCulture;
+                    if(DateTime.TryParseExact(dateString, format, provider, System.Globalization.DateTimeStyles.None, out DateTime dateResult))
+                    {
+                            DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
+                            // here is where we add the reading to the reading table in the database
+                            DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
+                            DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
+                            DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
+                            DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
 
-                    DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
-                    // here is where we add the reading to the reading table in the database
-                    DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
-                    DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
-                    DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
-                    DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
+                    }
+
+
+
 
 
                 }
@@ -179,14 +185,14 @@ public class readSampleData
 
 
             // this produces an sensor reading for the sensor reading table
-            // the air quality sample data has its actual readings start at line 11, or index 10
+            // the water quality sample data has its actual readings start at line 6, or index 5
             // it stores these values Date	Time	Nitrate (mg l-1)	Nitrite <mg l-1)	Phosphate (mg l-1)	EC (cfu/100ml)
 
             //                         0   1            2                 3                4                           5
             int count = 0;
             foreach (var line in lines)
             {
-                if (count >= 10)
+                if (count >= 5)
                 {
                     var values = line.Split(',');
 
@@ -233,14 +239,14 @@ public class readSampleData
 
 
             // this produces an sensor reading for the sensor reading table
-            // the air quality sample data has its actual readings start at line 11, or index 10
+            // the weather sample data has its actual readings start at line 5, or index 4
             // it stores these values time	temperature_2m (¬∞C)	relative_humidity_2m (%)	wind_speed_10m (m/s)	wind_direction_10m (¬∞)	
 
             //                         0        1                        2                              3                  4  
             int count = 0;
             foreach (var line in lines)
             {
-                if (count >= 10)
+                if (count >= 4)
                 {
                     var values = line.Split(',');
 

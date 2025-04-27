@@ -8,11 +8,157 @@
             Text="Welcome to the sensor status page!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Picker x:Name="sensorPicker"
+                Title="What sensots do you want to review?">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                <x:String>Air</x:String>
+                <x:String>Water</x:String>
+                <x:String>Weather</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- check Button -->
+        <Button 
+                Text="Review"
+                x:Name="Review_Btn"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="5"
+                HorizontalOptions="Fill" 
+                Clicked="Review_Btn_Clicked"/>
         <Label 
-                Text="MyApWelcome to p"
-                x:Name="tester"
-                FontSize="24"
-                FontAttributes="Bold"
-                HorizontalOptions="Center" />
+            Text="Selected:"
+            x:Name="SensorsSelectedLabel"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 1:"
+            x:Name="s1Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s1Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 2:"
+            x:Name="s2Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s2Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 3:"
+            x:Name="s3Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s3Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 14:"
+            x:Name="s4Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s4Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 5:"
+            x:Name="s5Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s5Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 6:"
+            x:Name="s6Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s6Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+
+            <Label 
+            Text="SENSOR 7:"
+            x:Name="s7Label"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Background="#FF8B8B8B"/>
+            <Label 
+            Text="                  "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="value:"
+            x:Name="s7Value"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

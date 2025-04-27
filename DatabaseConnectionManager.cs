@@ -10,6 +10,8 @@ namespace MauiApp1
         private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Assessment2Db);
         private static readonly string ConnectionString = $"Data Source={DbPath}";
 
+        public static bool isDatabaseAvailable = false;
+
         private static readonly Lazy<SqliteConnection> LazyConnection = new(() =>
         {
             try
