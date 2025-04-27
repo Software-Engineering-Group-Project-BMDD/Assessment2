@@ -24,7 +24,7 @@
         <Grid Margin="0,20,0,10" ColumnDefinitions="Auto,*,Auto,Auto">
             <Label 
                 Grid.Column="0"
-                Text="Sensor status"
+                Text="Air Quality sensors"
                 TextColor="White"
                 VerticalOptions="Center" />
 
@@ -35,11 +35,12 @@
                 Padding="0"
                 CornerRadius="5"
                 Margin="5,0,5,0">
-                <Picker 
-                    Title="Option 1"
+                <Button 
+                    x:Name="BtnFirstSensorPage"
+                    Text="Select Option"
                     TextColor="White"
-                    TitleColor="White"
-                    BackgroundColor="Transparent" />
+                    BackgroundColor="Transparent"
+                    Clicked="OnSensorOptionButtonClicked" />
             </Frame>
 
             <Image 
@@ -74,11 +75,12 @@
                 Padding="0"
                 CornerRadius="5"
                 Margin="5,0,5,0">
-                <Picker 
-                    Title="Option 1"
+                <Button 
+                    x:Name="BtnSecondSensorPage"
+                    Text="Select Option"
                     TextColor="White"
-                    TitleColor="White"
-                    BackgroundColor="Transparent" />
+                    BackgroundColor="Transparent"
+                    Clicked="OnSensorOptionButtonClicked" />
             </Frame>
 
             <Image 
@@ -113,11 +115,12 @@
                 Padding="0"
                 CornerRadius="5"
                 Margin="5,0,5,0">
-                <Picker 
-                    Title="Option 1"
+                <Button 
+                    x:Name="BtnThirdSensorPage"
+                    Text="Select Option"
                     TextColor="White"
-                    TitleColor="White"
-                    BackgroundColor="Transparent" />
+                    BackgroundColor="Transparent"
+                    Clicked="OnSensorOptionButtonClicked" />
             </Frame>
 
             <Image 
