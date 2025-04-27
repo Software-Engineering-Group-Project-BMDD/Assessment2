@@ -71,6 +71,20 @@ namespace MauiApp1
             return Convert.ToInt32(ExecuteScalar("SELECT last_insert_rowid()"));
         }
 
+        /// <summary>
+        /// Gets all readings for a specific sensor
+        /// </summary>
+        public static SqliteDataReader GetFinalReading(int sensorId)
+        {
+            return ExecuteReader(
+                @"SELECT reading_id, sensor_value, timestamp, sensor_setpoint 
+                FROM Sensor_reading 
+                WHERE sensor_id = @sensor_id 
+                ORDER BY timestamp DESC LIMIT 1",
+                new Dictionary<string, object> { { "@sensor_id", sensorId } });
+        }
+
+
         public static SqliteDataReader GetUsersWithRoles()
         {
             return ExecuteReader(@"SELECT u.User_id, u.F_Name, u.L_Name, u.Address, r.Role_name 

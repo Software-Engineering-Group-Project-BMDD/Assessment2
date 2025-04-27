@@ -1,5 +1,6 @@
 using Xamarin.Google.ErrorProne.Annotations;
 using System.Globalization;
+using Microsoft.Data.Sqlite;
 
 namespace MauiApp1;
 
@@ -205,6 +206,15 @@ public partial class SensorStatus : ContentPage
 		if (DatabaseConnectionManager.isDatabaseAvailable)
 		{
 			// when the database is connected, it will use this
+			string airRead = "";
+			string waterRead = "";
+			string weatherRead = "";
+
+			SqliteDataReader nitroReader = DatabaseRepository.GetFinalReading(0); // nitrogen
+			SqliteDataReader sulphReader = DatabaseRepository.GetFinalReading(0); // sulph
+			SqliteDataReader pm2Reader = DatabaseRepository.GetFinalReading(0); // pm2
+			SqliteDataReader pm10Reader = DatabaseRepository.GetFinalReading(0); // pm10
+
 		}
 		else
 		{
