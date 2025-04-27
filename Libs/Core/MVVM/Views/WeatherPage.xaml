@@ -1,0 +1,89 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MauiApp1.Libs.Core.MVVM.Converters"
+             x:Class="MauiApp1.Libs.Core.MVVM.Views.WeatherPage"
+             Title="{Binding WeatherData.LocationSummary}">
+
+    <!-- call s in converters for direction -->
+    <ContentPage.Resources>
+        <converters:WindDirectionToCardinalConverter x:Key="WindDirectionConverter"/>
+        <converters:IntToVisibilityConverter x:Key="VisibilityConverter"/>
+    </ContentPage.Resources>
+
+    <!-- this was for testing intially for database  -->
+    <RefreshView IsRefreshing="{Binding IsLoading}"
+                 Command="{Binding LoadWeatherDataCommand}">
+        
+        <!-- scroll -->
+        <ScrollView>
+            <StackLayout Spacing="10" Padding="15">
+                
+                <!-- Location Card -->
+                <Frame BorderColor="#3498db" BackgroundColor="#ebf5fb" Padding="15">
+                    <StackLayout Spacing="5">
+                        <!-- Location Name as primary identifier -->
+                        <Label Text="{Binding WeatherData.Location.Name}" 
+                               FontSize="22" FontAttributes="Bold" 
+                               TextColor="#2c3e50"/>
+
+                        <!-- Timezone as secondary information -->
+                        <Label Text="{Binding WeatherData.Location.Timezone}" 
+                               FontSize="14" TextColor="#7f8c8d"/>
+
+                        <!-- Technical details in a grid -->
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" Margin="0,10,0,0">
+                            
+                            <!-- Coordinates -->
+                            <Label Text="{Binding WeatherData.Location.Latitude, StringFormat='Lat: {0:N4} '}"
+                                   Grid.Row="0" Grid.Column="0"/>
+                            
+                            <Label Text="{Binding WeatherData.Location.Longitude, StringFormat='Lon: {0:N4} '}"
+                                   Grid.Row="0" Grid.Column="1"/>
+
+                            <!--   Elevation/UTC -->
+                            <Label Text="{Binding WeatherData.Location.Elevation, StringFormat='Elev: {0}m'}"
+                                   Grid.Row="1" Grid.Column="0"/>
+                            
+                            <Label Text="{Binding WeatherData.Location.UtcOffset, StringFormat='UTC{0:+0;-0}'}"
+                                   Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Weather Measurements -->
+                <Label Text="Recent Observations" FontSize="16" FontAttributes="Bold"
+                       IsVisible="{Binding WeatherData.Measurements.Count, Converter={StaticResource VisibilityConverter}}"/>
+
+                <!--  colleciton for the dta -->
+                <CollectionView ItemsSource="{Binding WeatherData.Measurements}"
+                               EmptyView="No weather observations available"
+                               SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0,0,0,10" Padding="15" 
+                                   BackgroundColor="#f8f9fa" BorderColor="#dee2e6">
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                                    <!-- Time -->
+                                    <Label Text="{Binding Time, StringFormat='{0:g}'}"
+                                           Grid.ColumnSpan="2" FontAttributes="Bold"/>
+
+                                    <!-- Temperature/Humidity -->
+                                    <Label Text="{Binding Temperature, StringFormat='{0} C'}"
+                                           Grid.Row="1" Grid.Column="0" FontSize="18"/>
+                                    <Label Text="{Binding Humidity, StringFormat='Humidity: {0}%'}"
+                                           Grid.Row="1" Grid.Column="1"/>
+
+                                    <!-- Wind -->
+                                    <Label Text="{Binding WindSpeed, StringFormat='Wind: {0} m/s'}"
+                                           Grid.Row="2" Grid.Column="0"/>
+                                    <Label Text="{Binding WindDirection, Converter={StaticResource WindDirectionConverter}}"
+                                           Grid.Row="2" Grid.Column="1"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
