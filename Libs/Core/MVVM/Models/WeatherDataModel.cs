@@ -1,6 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿//using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // this is updated and newest package
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
@@ -13,7 +14,7 @@ namespace MauiApp1.Libs.Core.MVVM.Models
     {
         // this is my connection string to my local sql database
         // i tried using docker but wasn't working maybe due to networking ang permissions
-
+        // const string basically
         private readonly string _connectionString = @"Server=localhost;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
 
         // initilaize the location data class
@@ -59,24 +60,28 @@ namespace MauiApp1.Libs.Core.MVVM.Models
         private async Task LoadLocation(int locationId)
         {
 
-
             try
             {
-                using var connection = new SqlConnection(_connectionString);
+                // initaize connection with connection string
+                SqlConnection connection = new SqlConnection(_connectionString);
+
+                // open conection
                 await connection.OpenAsync();
 
-
-
+                // a query to pull all the data related to a specfic location
                 var query = "SELECT * FROM Locations WHERE LocationId = @LocationId";
 
-
+                // make a command query and connection
                 using var command = new SqlCommand(query, connection);
 
+                // bind parameters
                 command.Parameters.AddWithValue("@LocationId", locationId);
 
+                //
                 using var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    // update properties
                     Location = new LocationInfoModel
                     {
                         Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -88,6 +93,7 @@ namespace MauiApp1.Libs.Core.MVVM.Models
                     };
                 }
             }
+            // error handling display 
             catch (Exception ex)
             {
                 Debug.WriteLine($"Location load error: {ex.Message}");
@@ -143,13 +149,48 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
+        // this method is to help dynamically count all the locations so the i can scroll throught teh records withput issues
+        public async Task<int> CountLocationsAsync()
+        {
+            try
+            {
+                // setup a connection
+                SqlConnection connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // count all from the  Locations table
+                var query = "SELECT COUNT(*) FROM Locations";
+
+                // query and connection
+                using var command = new SqlCommand(query, connection);
+
+                // Execute the query and get the result
+                var result = await command.ExecuteScalarAsync();
+
+                // data into a object
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                // Write a debug meassage on error
+                Debug.WriteLine($"Count Locations error: {ex.Message}");
+
+                // return fail
+                return 0;
+            }
+        }
+
+
+
+
         // interpolated string with nullable checks regarding geo location data
-        public string LocationSummary => $"{Location?.Timezone} ({Location?.Latitude:N2}°, {Location?.Longitude:N2}°)";
+        public string LocationSummary => $"" +
+            $"{Location?.Timezone} ({Location?.Latitude:N2}°, {Location?.Longitude:N2}°)";
 
         // evnet 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // magic property call methid
+        // magic property call methid that know who clal ed it, part of teh relection system I believe
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

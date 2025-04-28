@@ -17,7 +17,48 @@
         <!-- scroll -->
         <ScrollView>
             <StackLayout Spacing="10" Padding="15">
-                
+
+                <!-- up up and down teh iterations -->
+                <Grid 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    BackgroundColor="LightGray" 
+                    WidthRequest="450"
+                    HeightRequest="80"
+                    Padding="10">   
+
+                    <!-- Define the columns for the Grid -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- up up and down the iterations -->
+                    <Button Text="Previous" Command="{Binding PreviousLocationCommand}"
+                            BackgroundColor="DodgerBlue"
+                            TextColor="White"
+                            Padding="15,10"
+                            FontSize="Small"
+                            HeightRequest="60"
+                            WidthRequest="150"
+                            CornerRadius="10"
+                            Grid.Column="0" 
+                            
+                         />
+
+                    <Button Text="Next" Command="{Binding NextLocationCommand}"
+                        BackgroundColor="DodgerBlue"
+                        TextColor="White"
+                        Padding="15,10"
+                        FontSize="Small"
+                        HeightRequest="60"
+                        WidthRequest="150"
+                        CornerRadius="10"
+                        Grid.Column="1" 
+                            />
+                </Grid>
+
+
                 <!-- Location Card -->
                 <Frame BorderColor="#3498db" BackgroundColor="#ebf5fb" Padding="15">
                     <StackLayout Spacing="5">
@@ -83,6 +124,10 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
+                
+
+
             </StackLayout>
         </ScrollView>
     </RefreshView>
