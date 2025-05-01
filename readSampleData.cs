@@ -104,13 +104,13 @@ public class readSampleData
             List<string> lines = task.Result;
 
             // the first parts of the sample data are data about the sensor itself
-            var siteName = lines.ElementAt(2).Split(',')[1];
-            var latitude = lines.ElementAt(3).Split(',')[1];
-            var longitude = lines.ElementAt(4).Split(',')[1];
-            var siteType = lines.ElementAt(5).Split(',')[1];
-            var zone = lines.ElementAt(6).Split(',')[1];
-            var agglomeration = lines.ElementAt(7).Split(',')[1];
-            var localAuthority = lines.ElementAt(8).Split(',')[1];
+            var siteName = lines.ElementAt(2).Split(',')[2];
+            var latitude = lines.ElementAt(3).Split(',')[2];
+            var longitude = lines.ElementAt(4).Split(',')[2];
+            var siteType = lines.ElementAt(5).Split(',')[2];
+            var zone = lines.ElementAt(6).Split(',')[2];
+            var agglomeration = lines.ElementAt(7).Split(',')[2];
+            var localAuthority = lines.ElementAt(8).Split(',')[2];
 
             List<string> Metadata = readMeta();
             // lines 2 - 5 / index 1 - 4 are about air quality sensors

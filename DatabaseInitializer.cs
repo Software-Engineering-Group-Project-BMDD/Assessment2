@@ -30,6 +30,7 @@ namespace MauiApp1
                     throw new InvalidOperationException($"Failed to create database file at {dbPath}", ex);
                 }
             }
+
         }
 
         private static void CreateTables(SqliteConnection connection)

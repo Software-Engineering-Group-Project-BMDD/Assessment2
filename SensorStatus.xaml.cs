@@ -1,4 +1,3 @@
-using Xamarin.Google.ErrorProne.Annotations;
 using System.Globalization;
 using Microsoft.Data.Sqlite;
 
@@ -85,12 +84,12 @@ public partial class SensorStatus : ContentPage
 		s4Value.Text = pm10;
 
 		s5Label.Text="";
-		s5Label.Text="";
+		s5Value.Text="";
 
 		s6Label.Text="";
-		s6Label.Text="";
+		s6Value.Text="";
 		s7Label.Text="";
-		s7Label.Text="";
+		s7Value.Text="";
 	}
 	void showWaterStatus(string row)
 	{
@@ -133,12 +132,12 @@ public partial class SensorStatus : ContentPage
 		s4Value.Text = Ec;
 
 		s5Label.Text="";
-		s5Label.Text="";
+		s5Value.Text="";
 
 		s6Label.Text="";
-		s6Label.Text="";
+		s6Value.Text="";
 		s7Label.Text="";
-		s7Label.Text="";
+		s7Value.Text="";
 	}
 	void showWeatherStatus(string row)
 	{
@@ -180,12 +179,12 @@ public partial class SensorStatus : ContentPage
 		s4Value.Text = dir;
 
 		s5Label.Text="";
-		s5Label.Text="";
+		s5Value.Text="";
 
 		s6Label.Text="";
-		s6Label.Text="";
+		s6Value.Text="";
 		s7Label.Text="";
-		s7Label.Text="";
+		s7Value.Text="";
 	}
 	/// <summary>
 	/// will get a specific row from the meta data table
@@ -206,15 +205,78 @@ public partial class SensorStatus : ContentPage
 		if (DatabaseConnectionManager.isDatabaseAvailable)
 		{
 			// when the database is connected, it will use this
-			string airRead = "";
-			string waterRead = "";
-			string weatherRead = "";
+			string airRead = ",,";
+			string waterRead = ",,";
+			string weatherRead = ",";
 
 			SqliteDataReader nitroReader = DatabaseRepository.GetFinalReading(0); // nitrogen
-			SqliteDataReader sulphReader = DatabaseRepository.GetFinalReading(0); // sulph
-			SqliteDataReader pm2Reader = DatabaseRepository.GetFinalReading(0); // pm2
-			SqliteDataReader pm10Reader = DatabaseRepository.GetFinalReading(0); // pm10
+			while (nitroReader.Read())
+			{
+				airRead += nitroReader["sensor_value"].ToString() + ",";	
+			}
+			SqliteDataReader sulphReader = DatabaseRepository.GetFinalReading(1); // sulph
+			while (sulphReader.Read())
+			{
+				airRead += sulphReader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader pm2Reader = DatabaseRepository.GetFinalReading(2); // pm2
+			while (pm2Reader.Read())
+			{
+				airRead += pm2Reader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader pm10Reader = DatabaseRepository.GetFinalReading(3); // pm10
+			while (pm10Reader.Read())
+			{
+				airRead += pm10Reader["sensor_value"].ToString();
+			}
+			///
+			/// 
+			/// // it stores these values Date	Time	Nitrate (mg l-1)	Nitrite <mg l-1)	Phosphate (mg l-1)	EC (cfu/100ml)
+			SqliteDataReader nitrateReader = DatabaseRepository.GetFinalReading(4); // Nitrate
+			while (nitrateReader.Read())
+			{
+				waterRead += nitrateReader["sensor_value"].ToString() + ",";	
+			}
+			SqliteDataReader nitriteReader = DatabaseRepository.GetFinalReading(5); // Nitrite
+			while (nitriteReader.Read())
+			{
+				waterRead += nitriteReader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader phosReader = DatabaseRepository.GetFinalReading(6); // Phosphate
+			while (phosReader.Read())
+			{
+				waterRead += phosReader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader ecReader = DatabaseRepository.GetFinalReading(7); // EC
+			while (ecReader.Read())
+			{
+				waterRead += ecReader["sensor_value"].ToString();
+			}
+			// it stores these values time	temperature_2m (¬∞C)	relative_humidity_2m (%)	wind_speed_10m (m/s)	wind_direction_10m (¬∞)	
+			SqliteDataReader tempReader = DatabaseRepository.GetFinalReading(8); // temperature_2m
+			while (tempReader.Read())
+			{
+				weatherRead += tempReader["sensor_value"].ToString() + ",";	
+			}
+			SqliteDataReader humiReader = DatabaseRepository.GetFinalReading(9); // relative_humidity_2m
+			while (humiReader.Read())
+			{
+				weatherRead += humiReader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader speedReader = DatabaseRepository.GetFinalReading(10); // wind_speed_10m
+			while (speedReader.Read())
+			{
+				weatherRead += speedReader["sensor_value"].ToString() + ",";
+			}
+			SqliteDataReader dirReader = DatabaseRepository.GetFinalReading(11); // wind_direction_10m
+			while (dirReader.Read())
+			{
+				weatherRead += dirReader["sensor_value"].ToString();
+			}
 
+			readings[0] = airRead;
+			readings[1] = waterRead;
+			readings[2] = weatherRead;
 		}
 		else
 		{
