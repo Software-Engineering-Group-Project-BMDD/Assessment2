@@ -16,9 +16,9 @@ jobs:
 
     env:
       Solution_Name: MauiApp1.sln
-      Test_Project_Path:     Assessment2/MauiApp1.sln
-      Wap_Project_Directory: your-wap-project-directory-name
-      Wap_Project_Path: your-wap-project-path
+      Test_Project_Path: Assessment2/MauiApp1.sln
+      Wap_Project_Directory: Assessment2/WapProjectDir
+      Wap_Project_Path: Assessment2/WapProjectDir/WapProject.csproj
 
     steps:
     - name: Checkout
@@ -33,22 +33,22 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore Dependencies
-      run: dotnet restore $env:Solution_Name
+      run: dotnet restore ${{ env.Solution_Name }}
 
     - name: Run Unit Tests
-      run: dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }}
+      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }}
 
     - name: Decode Signing Certificate
       run: |
         $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
-        $certificatePath = Join-Path -Path $env:Wap_Project_Directory -ChildPath GitHubActionsWorkflow.pfx
+        $certificatePath = Join-Path -Path ${{ env.Wap_Project_Directory }} -ChildPath GitHubActionsWorkflow.pfx
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     - name: Build and Package App
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: msbuild ${{ env.Wap_Project_Path }} /p:Configuration=${{ matrix.configuration }} /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:PackageCertificateKeyFile=${{ env.Wap_Project_Directory }}\GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.PfxPassword }}
 
     - name: Clean Up Certificate
-      run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
+      run: Remove-Item -path ${{ env.Wap_Project_Directory }}\GitHubActionsWorkflow.pfx
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
