@@ -1,8 +1,7 @@
 using System;
-using Java.Sql;
 using System.Globalization;
-using Xamarin.Google.ErrorProne.Annotations;
 using System.Net.Sockets;
+using System.Data.SqlClient;
 
 namespace MauiApp1;
 

@@ -204,14 +204,14 @@ public partial class SensorStatus : ContentPage
 	{
 		bool useDatabse = true;
 		string[] readings = new string[3];
-		if (DatabaseConnectionManager.isDatabaseAvailable)
+		if (useDatabse)
 		{
 			// when the database is connected, it will use this
 			string airRead = ",,";
 			string waterRead = ",,";
 			string weatherRead = ",";
 
-			var connectionString = "Server=localhost;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
+			var connectionString = DatabaseConnectionManager.GetDatabasePath();
 			using var connection = new SqlConnection(connectionString);
 			connection.Open();
 			Console.WriteLine("Connection successful!");

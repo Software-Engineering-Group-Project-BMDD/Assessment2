@@ -8,7 +8,7 @@ namespace MauiApp1
     {
         private static readonly string Assessment2Db = "Assessment2Db.db";
         private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Assessment2Db);
-        private static readonly string ConnectionString = $"Data Source={DbPath}";
+        private static readonly string ConnectionString = $"Server=localDRYVERNPC\\LOCALHOST;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
 
         public static bool isDatabaseAvailable = false;
 
