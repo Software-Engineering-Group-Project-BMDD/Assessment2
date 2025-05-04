@@ -12,7 +12,7 @@
                       ContentTemplate="{DataTemplate views:MainPage}"/>
         <ShellContent Route="AdminView"
                       ContentTemplate="{DataTemplate views:AdminView}"/>
-        <ShellContent Route="MapView"
-                      ContentTemplate="{DataTemplate views:MapView}"/>
+        <ShellContent Route="SensorView"
+                      ContentTemplate="{DataTemplate views:SensorView}"/>
 
 </Shell>

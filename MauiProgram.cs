@@ -30,8 +30,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<AdminViewModel>();
 		builder.Services.AddSingleton<AdminView>();
 
-		builder.Services.AddTransient<MapViewModel>();
-		builder.Services.AddSingleton<MapView>();
+		builder.Services.AddTransient<SensorViewModel>();
+		builder.Services.AddSingleton<SensorView>();
 
 		return builder.Build();
 	}

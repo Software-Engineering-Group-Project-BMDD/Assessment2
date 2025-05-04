@@ -6,7 +6,7 @@ using MauiApp1.UI.Model;
 
 namespace MauiApp1.UI.ViewModel;
 
-public class MapViewModel : ObservableObject
+public class SensorViewModel : ObservableObject
 {
 
     private SensorDatabase _database;
@@ -15,7 +15,7 @@ public class MapViewModel : ObservableObject
 
     public IAsyncRelayCommand<Sensor> NavigateCommand { get; }
 
-    public MapViewModel(SensorDatabase sensorDatabase)
+    public SensorViewModel(SensorDatabase sensorDatabase)
     {
         _database = sensorDatabase;
         // Initialize the NavigateCommand

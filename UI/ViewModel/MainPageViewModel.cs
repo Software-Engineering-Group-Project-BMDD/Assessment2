@@ -25,7 +25,7 @@ public class MainPageViewModel : ObservableObject
 
     private void NavigateSensorMap()
     {
-        Shell.Current.GoToAsync("//MapView");
+        Shell.Current.GoToAsync("//SensorView");
     }
 
 }

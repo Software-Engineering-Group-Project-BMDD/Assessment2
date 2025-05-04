@@ -70,4 +70,10 @@
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="UI\View\SensorView.xaml.cs">
+	    <DependentUpon>SensorView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
