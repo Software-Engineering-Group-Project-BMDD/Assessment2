@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiApp1.UI.View;
+using MauiApp1.UI.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace MauiApp1;
 
@@ -18,6 +20,15 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+		builder.Services.AddSingleton<SensorDatabase>();
+		builder.Services.AddSingleton<App>();
+
+		builder.Services.AddTransient<MainPageViewModel>();
+		builder.Services.AddSingleton<MainPage>();
+
+		builder.Services.AddTransient<AdminViewModel>();
+		builder.Services.AddSingleton<AdminView>();
 
 		return builder.Build();
 	}
