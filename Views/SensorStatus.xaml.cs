@@ -1,7 +1,7 @@
 using System.Globalization;
-using Microsoft.Data.Sqlite;
+using System.Data.SqlClient;
 
-namespace MauiApp1;
+namespace MauiApp1.Views;
 
 public partial class SensorStatus : ContentPage
 {
@@ -13,6 +13,7 @@ public partial class SensorStatus : ContentPage
 
 		if(DatabaseConnectionManager.isDatabaseAvailable)
 		{
+			// this is for when we can 
 			_dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
 
 			var ia =  readSampleData.initializeFullAirQuality();
@@ -201,6 +202,7 @@ public partial class SensorStatus : ContentPage
 
 	public string[] GetLastReading()
 	{
+		bool useDatabse = true;
 		string[] readings = new string[3];
 		if (DatabaseConnectionManager.isDatabaseAvailable)
 		{
@@ -209,70 +211,10 @@ public partial class SensorStatus : ContentPage
 			string waterRead = ",,";
 			string weatherRead = ",";
 
-			SqliteDataReader nitroReader = DatabaseRepository.GetFinalReading(0); // nitrogen
-			while (nitroReader.Read())
-			{
-				airRead += nitroReader["sensor_value"].ToString() + ",";	
-			}
-			SqliteDataReader sulphReader = DatabaseRepository.GetFinalReading(1); // sulph
-			while (sulphReader.Read())
-			{
-				airRead += sulphReader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader pm2Reader = DatabaseRepository.GetFinalReading(2); // pm2
-			while (pm2Reader.Read())
-			{
-				airRead += pm2Reader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader pm10Reader = DatabaseRepository.GetFinalReading(3); // pm10
-			while (pm10Reader.Read())
-			{
-				airRead += pm10Reader["sensor_value"].ToString();
-			}
-			///
-			/// 
-			/// // it stores these values Date	Time	Nitrate (mg l-1)	Nitrite <mg l-1)	Phosphate (mg l-1)	EC (cfu/100ml)
-			SqliteDataReader nitrateReader = DatabaseRepository.GetFinalReading(4); // Nitrate
-			while (nitrateReader.Read())
-			{
-				waterRead += nitrateReader["sensor_value"].ToString() + ",";	
-			}
-			SqliteDataReader nitriteReader = DatabaseRepository.GetFinalReading(5); // Nitrite
-			while (nitriteReader.Read())
-			{
-				waterRead += nitriteReader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader phosReader = DatabaseRepository.GetFinalReading(6); // Phosphate
-			while (phosReader.Read())
-			{
-				waterRead += phosReader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader ecReader = DatabaseRepository.GetFinalReading(7); // EC
-			while (ecReader.Read())
-			{
-				waterRead += ecReader["sensor_value"].ToString();
-			}
-			// it stores these values time	temperature_2m (¬∞C)	relative_humidity_2m (%)	wind_speed_10m (m/s)	wind_direction_10m (¬∞)	
-			SqliteDataReader tempReader = DatabaseRepository.GetFinalReading(8); // temperature_2m
-			while (tempReader.Read())
-			{
-				weatherRead += tempReader["sensor_value"].ToString() + ",";	
-			}
-			SqliteDataReader humiReader = DatabaseRepository.GetFinalReading(9); // relative_humidity_2m
-			while (humiReader.Read())
-			{
-				weatherRead += humiReader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader speedReader = DatabaseRepository.GetFinalReading(10); // wind_speed_10m
-			while (speedReader.Read())
-			{
-				weatherRead += speedReader["sensor_value"].ToString() + ",";
-			}
-			SqliteDataReader dirReader = DatabaseRepository.GetFinalReading(11); // wind_direction_10m
-			while (dirReader.Read())
-			{
-				weatherRead += dirReader["sensor_value"].ToString();
-			}
+			var connectionString = "Server=localhost;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
+			using var connection = new SqlConnection(connectionString);
+			connection.Open();
+			Console.WriteLine("Connection successful!");
 
 			readings[0] = airRead;
 			readings[1] = waterRead;
