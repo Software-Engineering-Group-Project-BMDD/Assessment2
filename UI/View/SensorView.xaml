@@ -16,6 +16,11 @@
                         <Button Text="Navigate"
                                 Command="{Binding BindingContext.NavigateCommand, Source={x:Reference SensorCollectionView}}"
                                 CommandParameter="{Binding .}"/>
+                        <Label Text="Flagged for malfunctions/anomalies:"
+                                FontSize="Body"/>
+                        <Button Text="{Binding Flagged}"
+                                Command="{Binding BindingContext.ReportCommand, Source={x:Reference SensorCollectionView}}"
+                                CommandParameter="{Binding .}"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
