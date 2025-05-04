@@ -4,9 +4,11 @@
              xmlns:vm="clr-namespace:MauiApp1.UI.ViewModel"
              x:Class="MauiApp1.UI.View.MainPage">
 
-    <VerticalStackLayout>
-        <Button Text="Go to Admin Page"
-                Command="{Binding NavigateToAdminCommand}"/>
-    </VerticalStackLayout>
+        <VerticalStackLayout>
+                <Button Text="Go to Admin Page"
+                        Command="{Binding NavigateToAdminCommand}"/>
+                <Button Text="View Sensor Locations"
+                        Command="{Binding NavigateToSensorLocation}"/>
+        </VerticalStackLayout>
 
 </ContentPage>

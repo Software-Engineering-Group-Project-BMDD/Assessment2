@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.UI.View.MapView"
+             Title="MapView">
+
+    <Grid>
+        <CollectionView x:Name="SensorCollectionView"
+                        ItemsSource="{Binding Sensors}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Type}"
+                               FontSize="Medium"/>
+                        <Button Text="Navigate"
+                                Command="{Binding BindingContext.NavigateCommand, Source={x:Reference SensorCollectionView}}"
+                                CommandParameter="{Binding .}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

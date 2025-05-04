@@ -19,6 +19,6 @@ public static class Constants
         Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
 
     public static string BackupPath =>
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), DatabaseFilename);
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), DatabaseFilename);
 
 }
