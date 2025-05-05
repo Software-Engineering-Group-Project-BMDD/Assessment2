@@ -1,5 +1,6 @@
 using System.Globalization;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // this is updated and newest package
+
 
 namespace MauiApp1.Views;
 
@@ -11,10 +12,10 @@ public partial class SensorStatus : ContentPage
 	{
 		InitializeComponent();
 
-		if(DatabaseConnectionManager.isDatabaseAvailable)
+		if(readSampleData.dbAvailable)
 		{
 			// this is for when we can 
-			_dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
+			//_dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
 
 			var ia =  readSampleData.initializeFullAirQuality();
 
@@ -202,9 +203,9 @@ public partial class SensorStatus : ContentPage
 
 	public string[] GetLastReading()
 	{
-		bool useDatabse = true;
+		
 		string[] readings = new string[3];
-		if (useDatabse)
+		if (readSampleData.dbAvailable)
 		{
 			// when the database is connected, it will use this
 			string airRead = ",,";

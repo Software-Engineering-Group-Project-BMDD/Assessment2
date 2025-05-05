@@ -61,6 +61,10 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="SQLite" Version="3.13.0" />
+		<PackageReference Include="System.Data.SQLite.Linq" Version="1.0.119" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
 
 	</ItemGroup>
 
@@ -71,6 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Views\" />
 	  <Folder Include="Models\" />
 	</ItemGroup>
 

@@ -1,13 +1,15 @@
 using System;
 using System.Globalization;
 using System.Net.Sockets;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; // this is updated and newest package
+
 
 namespace MauiApp1;
 
 public class readSampleData
 {
-    	
+    public static bool dbAvailable = true;
+    public static string connectionString = "Server=DRYVERNPC\\LOCALHOST;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
     public static async Task<List<string>> readCSV(string DataFile)
     {
             List<string> lines = new List<string>();
@@ -88,8 +90,48 @@ public class readSampleData
         string Sensor = values[8]; 
 
 
-        DatabaseRepository.AddSensor(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
+        //DatabaseRepository.AddSensor(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
+        //try
+        //{
+        using SqlConnection connection = new SqlConnection(connectionString);
+        connection.Open();
 
+        // first check if the sensor is already in the database
+        string checkQuerry = "SELECT COUNT(*) FROM Sensor WHERE Sensor_Quantity = '" + Quantity + "';";
+        using SqlCommand CheckCommand = new SqlCommand(checkQuerry, connection);
+
+        using SqlDataReader reader = CheckCommand.ExecuteReader();
+
+        int count = 0;
+        while (reader.Read())
+        {
+            count = reader.GetInt32(0);
+        }
+
+        if(count <= 0)
+        {
+            // count being zero means that this sensor has not been added yet
+
+            string insertQuery = 
+            "INSERT INTO Sensor (Sensor_Quantity, Symbol, Unit, Unit_Desc, Frequency, SafeLevel, Longitude,Latitude,sensor_type) " +
+            "VALUES (@Sensor_Quantity, @Symbol, @Unit, @Unit_Desc, @Frequency, @SafeLevel, @Longitude, @Latitude, @sensor_type)";
+
+
+            using SqlCommand command = new SqlCommand(insertQuery, connection);
+            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
+            command.Parameters.AddWithValue("@Symbol", Symbol);
+            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
+            command.Parameters.AddWithValue("@Symbol", Symbol);
+            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
+            command.Parameters.AddWithValue("@Symbol", Symbol);
+            int rowsAffected = command.ExecuteNonQuery();
+            Console.WriteLine($"{rowsAffected} row(s) inserted.");
+        }
+        //}
+        //catch (Exception ex)
+        //{
+        //   throw new InvalidOperationException("Failed to initialize database connection " +  connectionString, ex);
+        //}     
     }
 
     public static string initializeFullAirQuality()
@@ -139,10 +181,10 @@ public class readSampleData
                     {
                             DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
                             // here is where we add the reading to the reading table in the database
-                            DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
-                            DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
-                            DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
-                            DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
+                            //DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
+                            //DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
+                            //DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
+                           // DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
 
                     }
 
