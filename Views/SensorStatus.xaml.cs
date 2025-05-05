@@ -6,7 +6,6 @@ namespace MauiApp1.Views;
 
 public partial class SensorStatus : ContentPage
 {
-	private readonly string _dbPath; // Declare the _dbPath field  
 
  	public SensorStatus()
 	{
@@ -14,8 +13,6 @@ public partial class SensorStatus : ContentPage
 
 		if(readSampleData.dbAvailable)
 		{
-			// this is for when we can 
-			//_dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
 
 			var ia =  readSampleData.initializeFullAirQuality();
 

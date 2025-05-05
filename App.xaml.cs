@@ -1,4 +1,6 @@
-﻿namespace MauiApp1
+﻿using MauiApp1.Views;
+
+namespace MauiApp1
 {
     public partial class App : Application
     {
