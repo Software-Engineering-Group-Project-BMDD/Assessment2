@@ -41,4 +41,26 @@ public class UnitTest1
         Assert.True(File.Exists(Constants.BackupPath));
     }
 
+    [Fact]
+    public async Task ValidateFlagPersist()
+    {
+        var sensors = await database.GetSensorsAsync();
+
+        foreach (var sensor in sensors)
+        {
+            sensor.Flagged = true;
+            await database.SaveItemAsync(sensor);
+        }
+
+        sensors = await database.GetSensorsAsync();
+        bool flag = true;
+
+        foreach (var sensor in sensors)
+        {
+            sensor.Flagged = flag;
+        }
+
+        Assert.True(flag);
+    }
+
 }
