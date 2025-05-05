@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.Tests
+  commentId: N:MauiApp1.Tests
+  id: MauiApp1.Tests
+  children:
+  - MauiApp1.Tests.UnitTest1
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.Tests
+  nameWithType: MauiApp1.Tests
+  fullName: MauiApp1.Tests
+  type: Namespace
+  assemblies:
+  - MauiApp1.Tests
+references:
+- uid: MauiApp1.Tests.UnitTest1
+  commentId: T:MauiApp1.Tests.UnitTest1
+  href: MauiApp1.Tests.UnitTest1.html
+  name: UnitTest1
+  nameWithType: UnitTest1
+  fullName: MauiApp1.Tests.UnitTest1

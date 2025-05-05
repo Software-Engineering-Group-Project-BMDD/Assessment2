@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.UI.ViewModel
+  commentId: N:MauiApp1.UI.ViewModel
+  id: MauiApp1.UI.ViewModel
+  children:
+  - MauiApp1.UI.ViewModel.AdminViewModel
+  - MauiApp1.UI.ViewModel.MainPageViewModel
+  - MauiApp1.UI.ViewModel.SensorViewModel
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.UI.ViewModel
+  nameWithType: MauiApp1.UI.ViewModel
+  fullName: MauiApp1.UI.ViewModel
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.UI.ViewModel.AdminViewModel
+  commentId: T:MauiApp1.UI.ViewModel.AdminViewModel
+  parent: MauiApp1.UI.ViewModel
+  href: MauiApp1.UI.ViewModel.AdminViewModel.html
+  name: AdminViewModel
+  nameWithType: AdminViewModel
+  fullName: MauiApp1.UI.ViewModel.AdminViewModel
+- uid: MauiApp1.UI.ViewModel.MainPageViewModel
+  commentId: T:MauiApp1.UI.ViewModel.MainPageViewModel
+  parent: MauiApp1.UI.ViewModel
+  href: MauiApp1.UI.ViewModel.MainPageViewModel.html
+  name: MainPageViewModel
+  nameWithType: MainPageViewModel
+  fullName: MauiApp1.UI.ViewModel.MainPageViewModel
+- uid: MauiApp1.UI.ViewModel.SensorViewModel
+  commentId: T:MauiApp1.UI.ViewModel.SensorViewModel
+  parent: MauiApp1.UI.ViewModel
+  href: MauiApp1.UI.ViewModel.SensorViewModel.html
+  name: SensorViewModel
+  nameWithType: SensorViewModel
+  fullName: MauiApp1.UI.ViewModel.SensorViewModel
+- uid: MauiApp1.UI.ViewModel
+  commentId: N:MauiApp1.UI.ViewModel
+  href: MauiApp1.html
+  name: MauiApp1.UI.ViewModel
+  nameWithType: MauiApp1.UI.ViewModel
+  fullName: MauiApp1.UI.ViewModel
+  spec.csharp:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.UI
+    name: UI
+    href: MauiApp1.UI.html
+  - name: .
+  - uid: MauiApp1.UI.ViewModel
+    name: ViewModel
+    href: MauiApp1.UI.ViewModel.html
+  spec.vb:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.UI
+    name: UI
+    href: MauiApp1.UI.html
+  - name: .
+  - uid: MauiApp1.UI.ViewModel
+    name: ViewModel
+    href: MauiApp1.UI.ViewModel.html

@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1
+  commentId: N:MauiApp1
+  id: MauiApp1
+  children:
+  - MauiApp1.App
+  - MauiApp1.AppShell
+  - MauiApp1.Constants
+  - MauiApp1.MauiProgram
+  - MauiApp1.SensorDatabase
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1
+  nameWithType: MauiApp1
+  fullName: MauiApp1
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.App
+  commentId: T:MauiApp1.App
+  href: MauiApp1.App.html
+  name: App
+  nameWithType: App
+  fullName: MauiApp1.App
+- uid: MauiApp1.AppShell
+  commentId: T:MauiApp1.AppShell
+  href: MauiApp1.AppShell.html
+  name: AppShell
+  nameWithType: AppShell
+  fullName: MauiApp1.AppShell
+- uid: MauiApp1.Constants
+  commentId: T:MauiApp1.Constants
+  href: MauiApp1.Constants.html
+  name: Constants
+  nameWithType: Constants
+  fullName: MauiApp1.Constants
+- uid: MauiApp1.MauiProgram
+  commentId: T:MauiApp1.MauiProgram
+  href: MauiApp1.MauiProgram.html
+  name: MauiProgram
+  nameWithType: MauiProgram
+  fullName: MauiApp1.MauiProgram
+- uid: MauiApp1.SensorDatabase
+  commentId: T:MauiApp1.SensorDatabase
+  parent: MauiApp1
+  href: MauiApp1.SensorDatabase.html
+  name: SensorDatabase
+  nameWithType: SensorDatabase
+  fullName: MauiApp1.SensorDatabase
+- uid: MauiApp1
+  commentId: N:MauiApp1
+  href: MauiApp1.html
+  name: MauiApp1
+  nameWithType: MauiApp1
+  fullName: MauiApp1

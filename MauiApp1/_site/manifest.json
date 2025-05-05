@@ -1,0 +1,350 @@
+{
+  "source_base_path": "C:/Users/Declyn/Desktop/Assessment2/MauiApp1",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.App.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.App",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.AppShell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.AppShell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.AppShell",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.Constants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.Constants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.MauiProgram.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.MauiProgram.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.MauiProgram",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.SensorDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.SensorDatabase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.SensorDatabase",
+      "Summary": "<p sourcefile=\"api/MauiApp1.SensorDatabase.yml\" sourcestartlinenumber=\"1\">Handles SQLite database connection</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.Tests.UnitTest1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.Tests.UnitTest1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.Tests.UnitTest1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.Tests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.Tests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.Tests",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.Model.Sensor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.Model.Sensor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.Model.Sensor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.Model.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.Model",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.View.AdminView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.View.AdminView.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.View.AdminView",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.View.MainPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.View.MainPage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.View.MainPage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.View.SensorView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.View.SensorView.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.View.SensorView",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.View.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.View.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.View",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.ViewModel.AdminViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.ViewModel.AdminViewModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.ViewModel.AdminViewModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.ViewModel.MainPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.ViewModel.MainPageViewModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.ViewModel.MainPageViewModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.ViewModel.SensorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.ViewModel.SensorViewModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.ViewModel.SensorViewModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.UI.ViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.UI.ViewModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1.UI.ViewModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MauiApp1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MauiApp1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MauiApp1",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

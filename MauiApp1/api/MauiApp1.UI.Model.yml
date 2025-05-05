@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.UI.Model
+  commentId: N:MauiApp1.UI.Model
+  id: MauiApp1.UI.Model
+  children:
+  - MauiApp1.UI.Model.Sensor
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.UI.Model
+  nameWithType: MauiApp1.UI.Model
+  fullName: MauiApp1.UI.Model
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.UI.Model.Sensor
+  commentId: T:MauiApp1.UI.Model.Sensor
+  parent: MauiApp1.UI.Model
+  href: MauiApp1.UI.Model.Sensor.html
+  name: Sensor
+  nameWithType: Sensor
+  fullName: MauiApp1.UI.Model.Sensor
+- uid: MauiApp1.UI.Model
+  commentId: N:MauiApp1.UI.Model
+  href: MauiApp1.html
+  name: MauiApp1.UI.Model
+  nameWithType: MauiApp1.UI.Model
+  fullName: MauiApp1.UI.Model
+  spec.csharp:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.UI
+    name: UI
+    href: MauiApp1.UI.html
+  - name: .
+  - uid: MauiApp1.UI.Model
+    name: Model
+    href: MauiApp1.UI.Model.html
+  spec.vb:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.UI
+    name: UI
+    href: MauiApp1.UI.html
+  - name: .
+  - uid: MauiApp1.UI.Model
+    name: Model
+    href: MauiApp1.UI.Model.html

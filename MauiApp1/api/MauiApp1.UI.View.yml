@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.UI.View
+  commentId: N:MauiApp1.UI.View
+  id: MauiApp1.UI.View
+  children:
+  - MauiApp1.UI.View.AdminView
+  - MauiApp1.UI.View.MainPage
+  - MauiApp1.UI.View.SensorView
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.UI.View
+  nameWithType: MauiApp1.UI.View
+  fullName: MauiApp1.UI.View
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.UI.View.AdminView
+  commentId: T:MauiApp1.UI.View.AdminView
+  href: MauiApp1.UI.View.AdminView.html
+  name: AdminView
+  nameWithType: AdminView
+  fullName: MauiApp1.UI.View.AdminView
+- uid: MauiApp1.UI.View.MainPage
+  commentId: T:MauiApp1.UI.View.MainPage
+  href: MauiApp1.UI.View.MainPage.html
+  name: MainPage
+  nameWithType: MainPage
+  fullName: MauiApp1.UI.View.MainPage
+- uid: MauiApp1.UI.View.SensorView
+  commentId: T:MauiApp1.UI.View.SensorView
+  href: MauiApp1.UI.View.SensorView.html
+  name: SensorView
+  nameWithType: SensorView
+  fullName: MauiApp1.UI.View.SensorView

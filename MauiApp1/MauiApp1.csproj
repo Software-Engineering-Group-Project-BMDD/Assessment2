@@ -26,6 +26,8 @@
 
 		<AndroidSdkDirectory>ANDROID_HOME</AndroidSdkDirectory>
 
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+
 		<!-- Display name -->
 		<ApplicationTitle>MauiApp1</ApplicationTitle>
 
@@ -75,5 +77,6 @@
 	    <DependentUpon>SensorView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
+
 
 </Project>

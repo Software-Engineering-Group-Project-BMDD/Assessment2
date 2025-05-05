@@ -4,11 +4,17 @@ using SQLite;
 
 namespace MauiApp1;
 
+/// <summary>
+/// Handles SQLite database connection  
+/// </summary>
 public class SensorDatabase
 {
 
     SQLiteAsyncConnection database;
 
+    /// <summary>
+    /// Populates initial sensor data.
+    /// </summary>
     public async Task Populate()
     {
         var sensors = await GetSensorsAsync();
@@ -22,6 +28,9 @@ public class SensorDatabase
         await SaveItemAsync(new Sensor { Type = "Water", Latitude = 55.8632306, Longitude = -3.2547047 });
     }
 
+    /// <summary>
+    /// Backup data
+    /// </summary>
     public async Task Backup()
     {
         try
@@ -50,13 +59,18 @@ public class SensorDatabase
         var result = await database.CreateTableAsync<Sensor>();
     }
 
+    /// <summary>
+    /// Get all sensors
+    /// </summary>
     public async Task<List<Sensor>> GetSensorsAsync()
     {
         await Init();
         return await database.Table<Sensor>().ToListAsync();
     }
 
-
+    /// <summary>
+    /// Save a sensor to sqlite db
+    /// </summary>
     public async Task<int> SaveItemAsync(Sensor sensor)
     {
         await Init();
@@ -70,6 +84,9 @@ public class SensorDatabase
         }
     }
 
+    /// <summary>
+    /// Delete sensor from sqlite db
+    /// </summary>
     public async Task<int> DeleteItemAsync(Sensor sensor)
     {
         await Init();
