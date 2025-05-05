@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiApp1.UI.View;
+using MauiApp1.UI.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace MauiApp1;
 
@@ -14,11 +16,22 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+		builder.Services.AddSingleton<SensorDatabase>();
+		builder.Services.AddSingleton<App>();
+
+		builder.Services.AddTransient<MainPageViewModel>();
+		builder.Services.AddSingleton<MainPage>();
+
+		builder.Services.AddTransient<AdminViewModel>();
+		builder.Services.AddSingleton<AdminView>();
+
+		builder.Services.AddTransient<SensorViewModel>();
+		builder.Services.AddSingleton<SensorView>();
 
 		return builder.Build();
 	}

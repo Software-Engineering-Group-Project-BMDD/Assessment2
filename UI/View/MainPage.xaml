@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.UI.ViewModel"
+             x:Class="MauiApp1.UI.View.MainPage">
+
+        <VerticalStackLayout>
+                <Button Text="Go to Admin Page"
+                        Command="{Binding NavigateToAdminCommand}"/>
+                <Button Text="View Sensor Locations"
+                        Command="{Binding NavigateToSensorLocation}"/>
+        </VerticalStackLayout>
+
+</ContentPage>
