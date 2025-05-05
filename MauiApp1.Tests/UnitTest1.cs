@@ -25,7 +25,6 @@ public class UnitTest1
     [Fact]
     public async Task ValidateDatabasePersists()
     {
-        await database.Populate();
         var sensors = await database.GetSensorsAsync();
 
         Assert.True(sensors.Count() > 0);
