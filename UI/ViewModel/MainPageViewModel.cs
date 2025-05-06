@@ -27,5 +27,8 @@ public class MainPageViewModel : ObservableObject
     {
         Shell.Current.GoToAsync("//SensorView");
     }
-
+    private void NavigateToSensorStatus()
+    {
+        Shell.Current.GoToAsync("//SensorStatus");
+    }
 }

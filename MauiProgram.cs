@@ -1,5 +1,7 @@
-﻿using MauiApp1.UI.View;
+﻿using MauiApp1.UI.Model;
+using MauiApp1.UI.View;
 using MauiApp1.UI.ViewModel;
+
 using Microsoft.Extensions.Logging;
 
 namespace MauiApp1;
@@ -32,6 +34,9 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<SensorViewModel>();
 		builder.Services.AddSingleton<SensorView>();
+
+		//builder.Services.AddTransient<SensorStatusViewModel>();
+		//builder.Services.AddSingleton<SensorStatus>();
 
 		return builder.Build();
 	}

@@ -1,4 +1,6 @@
-﻿using MauiApp1.Views;
+﻿using MauiApp1.UI.View;
+using MauiApp1.UI.ViewModel;
+using MauiApp1.UI.Model;
 
 namespace MauiApp1
 {
@@ -8,13 +10,9 @@ namespace MauiApp1
         {
             InitializeComponent();
 
-<<<<<<< HEAD
-            MainPage = new SensorStatus();
-=======
             MainPage = new AppShell();
 
             Task.Run(async () => await sensorDatabase.Populate());
->>>>>>> fc07a982b49686ed4aeb55eb0431f7097b59f3c6
         }
     }
 }

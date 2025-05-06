@@ -94,9 +94,9 @@ namespace MauiApp1
                     )");
 
                 // must be done in this order!
-                readSampleData.initializeFullAirQuality();
-                readSampleData.initializeFullWaterQuality();
-                readSampleData.initializeFullWeatherData();
+                //readSampleData.initializeFullAirQuality();
+                //readSampleData.initializeFullWaterQuality();
+                //readSampleData.initializeFullWeatherData();
             }
             catch (Exception ex)
             {

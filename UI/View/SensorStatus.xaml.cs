@@ -1,30 +1,21 @@
 using System.Globalization;
 using Microsoft.Data.SqlClient; // this is updated and newest package
 
+using MauiApp1.UI.ViewModel;
+using MauiApp1.UI.Model;
 
-namespace MauiApp1.Views;
+namespace MauiApp1.UI.View;
+
 
 public partial class SensorStatus : ContentPage
 {
 
- 	public SensorStatus()
+ 	public SensorStatus(SensorStatusViewModel SensorStatusViewModel)
 	{
 		InitializeComponent();
-
-		if(readSampleData.dbAvailable)
-		{
-
-			var ia =  readSampleData.initializeFullAirQuality();
-
-
-		}
-		else
-		{
-			
-		}
+		BindingContext = SensorStatusViewModel;
 
 	}
-
 	public void Review_Btn_Clicked(object sender, EventArgs e)
 	{
 		int selectionIndex = sensorPicker.SelectedIndex;
@@ -209,10 +200,7 @@ public partial class SensorStatus : ContentPage
 			string waterRead = ",,";
 			string weatherRead = ",";
 
-			var connectionString = DatabaseConnectionManager.GetDatabasePath();
-			using var connection = new SqlConnection(connectionString);
-			connection.Open();
-			Console.WriteLine("Connection successful!");
+			
 
 			readings[0] = airRead;
 			readings[1] = waterRead;

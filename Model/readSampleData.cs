@@ -1,15 +1,15 @@
 using System;
 using System.Globalization;
 using System.Net.Sockets;
-using Microsoft.Data.SqlClient; // this is updated and newest package
+using SQLite;
 
 
-namespace MauiApp1;
+namespace MauiApp1.UI.Model;
 
 public class readSampleData
 {
     public static bool dbAvailable = true;
-    public static string connectionString = "Server=DRYVERNPC\\LOCALHOST;Database=MauiAppDB;Integrated Security=True;TrustServerCertificate=True;";
+    private SensorDatabase _database;
     public static async Task<List<string>> readCSV(string DataFile)
     {
             List<string> lines = new List<string>();
@@ -73,7 +73,7 @@ public class readSampleData
             return lines;
     }
 
-    public static void metaToDatabaseSensor(List<string> metadata, int index, double longitude, double latitude)
+    public async Task metaToDatabaseSensor(List<string> metadata, int index, double longitude, double latitude)
     {
         
 
@@ -81,52 +81,25 @@ public class readSampleData
 
         var values = line.Split(',');
 
-        string Quantity = values[1];
-        string Symbol = values[2];
-        string Unit = values[3];
-        string uDesc = values[4];
-        string MeasurementFrequency = values[5];
-        double SafeLevel = double.Parse(values[6]);
-        string Sensor = values[8]; 
+        string rQuantity = values[1];
+        string rSymbol = values[2];
+        string rUnit = values[3];
+        string ruDesc = values[4];
+        string rMeasurementFrequency = values[5];
+        string rSafeLevel = values[6];
+        string rSensor = values[8]; 
 
+        // this counts how many sensors there are
+        var sensors = await _database.GetSensorsAsync();
+        if (sensors.Count() > 0)
+        {
+            return;
+        }
 
         //DatabaseRepository.AddSensor(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
-        //try
-        //{
-        using SqlConnection connection = new SqlConnection(connectionString);
-        connection.Open();
-
-        // first check if the sensor is already in the database
-        string checkQuerry = "SELECT COUNT(*) FROM Sensor WHERE Sensor_Quantity = '" + Quantity + "';";
-        using SqlCommand CheckCommand = new SqlCommand(checkQuerry, connection);
-
-        using SqlDataReader reader = CheckCommand.ExecuteReader();
-
-        int count = 0;
-        while (reader.Read())
-        {
-            count = reader.GetInt32(0);
-        }
-
-        if(count <= 0)
-        {
-            // count being zero means that this sensor has not been added yet
-
-            string insertQuery = 
-            "INSERT INTO Sensor (Sensor_Quantity, Symbol, Unit, Unit_Desc, Frequency, SafeLevel, Longitude,Latitude,sensor_type) " +
-            "VALUES (@Sensor_Quantity, @Symbol, @Unit, @Unit_Desc, @Frequency, @SafeLevel, @Longitude, @Latitude, @sensor_type)";
-
-
-            using SqlCommand command = new SqlCommand(insertQuery, connection);
-            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
-            command.Parameters.AddWithValue("@Symbol", Symbol);
-            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
-            command.Parameters.AddWithValue("@Symbol", Symbol);
-            command.Parameters.AddWithValue("@Sensor_Quantity", Quantity);
-            command.Parameters.AddWithValue("@Symbol", Symbol);
-            int rowsAffected = command.ExecuteNonQuery();
-            Console.WriteLine($"{rowsAffected} row(s) inserted.");
-        }
+        _database.SaveItemAsync(new Sensor { Sensor_Quantity=rQuantity, Symbol = rSymbol, Unit = rUnit, 
+        Unit_Desc=ruDesc, Frequency=rMeasurementFrequency, SafeLevel=rSafeLevel,  Type = rSensor, Latitude = longitude, Longitude = longitude});
+        
         //}
         //catch (Exception ex)
         //{
@@ -134,7 +107,7 @@ public class readSampleData
         //}     
     }
 
-    public static string initializeFullAirQuality()
+    public string initializeFullAirQuality()
     {
             // get air quality data from sample data
             string path = FileSystem.AppDataDirectory;
@@ -156,12 +129,10 @@ public class readSampleData
             List<string> Metadata = readMeta();
             // lines 2 - 5 / index 1 - 4 are about air quality sensors
 
-            
-            metaToDatabaseSensor(Metadata, 1, double.Parse(longitude),double.Parse(latitude)); // nitrogen sensor
-            metaToDatabaseSensor(Metadata, 2, double.Parse(longitude),double.Parse(latitude)); // sulphur dioxide sensor
-            metaToDatabaseSensor(Metadata, 3, double.Parse(longitude),double.Parse(latitude)); // pm2.5 sensor
-            metaToDatabaseSensor(Metadata, 4, double.Parse(longitude),double.Parse(latitude)); // pm10 sensor
-
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 1, double.Parse(longitude),double.Parse(latitude)));// nitrogen sensor
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 2, double.Parse(longitude),double.Parse(latitude))); // sulphur dioxide sensor
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 3, double.Parse(longitude),double.Parse(latitude))); // pm2.5 sensor
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 4, double.Parse(longitude),double.Parse(latitude))); // pm10 sensor
 
             // this produces an sensor reading for the sensor reading table
             // the air quality sample data has its actual readings start at line 11, or index 10
@@ -196,7 +167,7 @@ public class readSampleData
             }
             return lines.ElementAt(10);
     }
-    public static string initializeFullWaterQuality()
+    public string initializeFullWaterQuality()
     {
             // get air quality data from sample data
             string path = FileSystem.AppDataDirectory;
@@ -217,13 +188,11 @@ public class readSampleData
             List<string> Metadata = readMeta();
             // lines 6 - 10 / index 5 - 9 are about water quality sensors
 
-            
-            metaToDatabaseSensor(Metadata, 5, double.Parse(longitude),double.Parse(latitude)); // Nitrate2
-            metaToDatabaseSensor(Metadata, 6, double.Parse(longitude),double.Parse(latitude)); // Nitrate3
-            metaToDatabaseSensor(Metadata, 7, double.Parse(longitude),double.Parse(latitude)); // Phosphate
-            metaToDatabaseSensor(Metadata, 8, double.Parse(longitude),double.Parse(latitude)); // Escherichia
-            metaToDatabaseSensor(Metadata, 9, double.Parse(longitude),double.Parse(latitude)); // intestinal enterococci
-
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 5, double.Parse(longitude),double.Parse(latitude)));// Nitrate2
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 6, double.Parse(longitude),double.Parse(latitude)));// Nitrate3
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 7, double.Parse(longitude),double.Parse(latitude)));// Phosphate
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 8, double.Parse(longitude),double.Parse(latitude)));// Escherichia
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 9, double.Parse(longitude),double.Parse(latitude)));// intestinal enterococci
 
             // this produces an sensor reading for the sensor reading table
             // the water quality sample data has its actual readings start at line 6, or index 5
@@ -243,10 +212,10 @@ public class readSampleData
 
                     DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
                     // here is where we add the reading to the reading table in the database
-                    DatabaseRepository.AddSensorReading(4, double.Parse(values[2]), parsedDate, 0); // Nitrate2
-                    DatabaseRepository.AddSensorReading(5, double.Parse(values[3]), parsedDate, 0); // Nitrate3
-                    DatabaseRepository.AddSensorReading(6, double.Parse(values[4]), parsedDate, 0); // Phos
-                    DatabaseRepository.AddSensorReading(7, double.Parse(values[5]), parsedDate, 0); // Esch
+                    //DatabaseRepository.AddSensorReading(4, double.Parse(values[2]), parsedDate, 0); // Nitrate2
+                   // DatabaseRepository.AddSensorReading(5, double.Parse(values[3]), parsedDate, 0); // Nitrate3
+                   // DatabaseRepository.AddSensorReading(6, double.Parse(values[4]), parsedDate, 0); // Phos
+                   // DatabaseRepository.AddSensorReading(7, double.Parse(values[5]), parsedDate, 0); // Esch
                     // DatabaseRepository.AddSensorReading(8, double.Parse(values[5]), parsedDate, 0); // Intestinal... though the sample data doesnt seem to actually have data for this
 
 
@@ -254,7 +223,7 @@ public class readSampleData
             }
             return lines.ElementAt(10);
     }
-    public static string initializeFullWeatherData()
+    public string initializeFullWeatherData()
     {
             // get air quality data from sample data
             string path = FileSystem.AppDataDirectory;
@@ -272,11 +241,10 @@ public class readSampleData
             List<string> Metadata = readMeta();
             // lines 11 - 14 / index 10 - 13 are about weather sensors
 
-            
-            metaToDatabaseSensor(Metadata, 10, double.Parse(longitude),double.Parse(latitude)); // air temp
-            metaToDatabaseSensor(Metadata, 11, double.Parse(longitude),double.Parse(latitude)); // humidity
-            metaToDatabaseSensor(Metadata, 12, double.Parse(longitude),double.Parse(latitude)); // wind speed
-            metaToDatabaseSensor(Metadata, 13, double.Parse(longitude),double.Parse(latitude)); // wind direction
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 10, double.Parse(longitude),double.Parse(latitude)));// air temp
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 11, double.Parse(longitude),double.Parse(latitude)));// humidity
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 12, double.Parse(longitude),double.Parse(latitude)));// wind speed
+            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 13, double.Parse(longitude),double.Parse(latitude)));// wind direction
 
 
             // this produces an sensor reading for the sensor reading table
@@ -297,10 +265,10 @@ public class readSampleData
 
                     DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
                     // here is where we add the reading to the reading table in the database
-                    DatabaseRepository.AddSensorReading(9, double.Parse(values[1]), parsedDate, 0); // temp
-                    DatabaseRepository.AddSensorReading(10, double.Parse(values[2]), parsedDate, 0); // humid
-                    DatabaseRepository.AddSensorReading(11, double.Parse(values[3]), parsedDate, 0); // wind speed
-                    DatabaseRepository.AddSensorReading(12, double.Parse(values[4]), parsedDate, 0); // wind dir
+                  //  DatabaseRepository.AddSensorReading(9, double.Parse(values[1]), parsedDate, 0); // temp
+                  //  DatabaseRepository.AddSensorReading(10, double.Parse(values[2]), parsedDate, 0); // humid
+                  ///  DatabaseRepository.AddSensorReading(11, double.Parse(values[3]), parsedDate, 0); // wind speed
+                 //   DatabaseRepository.AddSensorReading(12, double.Parse(values[4]), parsedDate, 0); // wind dir
 
                 }
             }

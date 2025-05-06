@@ -16,7 +16,9 @@ public class SensorDatabase
         {
             return;
         }
+        //readSampleData readsD = new readSampleData();
 
+        //readsD.initializeFullAirQuality();
         await SaveItemAsync(new Sensor { Type = "Weather", Latitude = 55.008785, Longitude = -3.5856323 });
         await SaveItemAsync(new Sensor { Type = "Air", Latitude = 55.94476, Longitude = -3.183991 });
         await SaveItemAsync(new Sensor { Type = "Water", Latitude = 55.8632306, Longitude = -3.2547047 });
