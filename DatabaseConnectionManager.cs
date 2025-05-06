@@ -1,35 +1,41 @@
 using System;
 using System.IO;
+using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
 
 namespace MauiApp1
 {
-    public static class DatabaseConnectionManager
+    public static class SensorDataRepository
     {
-        private static readonly string Assessment2Db = "Assessment2Db.db";
-        private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Assessment2Db);
-        private static readonly string ConnectionString = $"Data Source={DbPath}";
+        public static object DatabaseConnectionManager { get; private set; }
 
-        private static readonly Lazy<SqliteConnection> LazyConnection = new(() =>
+        public static List<SensorData> GetSensorData()
         {
-            try
-            {
-                DatabaseInitializer.EnsureDatabaseExists();
-                var connection = new SqliteConnection(ConnectionString);
-                connection.Open();
-                return connection;
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException("Failed to initialize database connection", ex);
-            }
-        });
+            var connection = DatabaseConnectionManager.GetConnection();
+            var sensorData = new List<SensorData>();
 
-        public static SqliteConnection GetConnection()
-        {
-            return LazyConnection.Value;
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT Id, SensorType, Value, Timestamp FROM SensorData";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        sensorData.Add(new SensorData
+                        {
+                            Id = reader.GetInt32(0),
+                            SensorType = reader.GetString(1),
+                            Value = reader.GetDouble(2),
+                            Timestamp = reader.GetDateTime(3)
+                        });
+                    }
+                }
+            }
+
+            return sensorData;
         }
 
-        public static string GetDatabasePath() => DbPath;
+        // Add other methods for CRUD operations
     }
 }

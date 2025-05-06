@@ -130,7 +130,7 @@
                 VerticalOptions="Center"
                 Source="{Binding SensorStatus, Converter={StaticResource StatusToImageConverter}}" />
 
-            <Frame 
+            <Frame
                 Grid.Column="3"
                 BackgroundColor="Orange"
                 CornerRadius="20"
