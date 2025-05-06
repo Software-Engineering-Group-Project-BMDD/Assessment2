@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Net.Sockets;
+using MauiApp1.Model;
 using SQLite;
 
 
@@ -10,6 +11,12 @@ public class readSampleData
 {
     public static bool dbAvailable = true;
     private SensorDatabase _database;
+
+    public readSampleData(SensorDatabase sd)
+    {
+        _database = sd;
+    }
+
     public static async Task<List<string>> readCSV(string DataFile)
     {
             List<string> lines = new List<string>();
@@ -97,21 +104,20 @@ public class readSampleData
         }
 
         //
-        //DatabaseRepository.AddSensor(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
-        await _database.SaveItemAsync(new Sensor { Sensor_Quantity=rQuantity, Symbol = rSymbol, Unit = rUnit, 
+        //(Quantity,Symbol, Unit, uDesc, MeasurementFrequency, SafeLevel, longitude, latitude, Sensor); 
+        // checks if the sensor is already in the database 
+        bool exists = await _database.DoesSensorExist(rQuantity);
+        // adds if not
+        if(!exists)
+            await _database.SaveItemAsync(new Sensor { Sensor_Quantity=rQuantity, Symbol = rSymbol, Unit = rUnit, 
          Unit_Desc=ruDesc, Frequency=rMeasurementFrequency, SafeLevel=rSafeLevel,  Type = rSensor, Latitude = longitude, Longitude = longitude});
-        
-        //}
-        //catch (Exception ex)
-        //{
-        //   throw new InvalidOperationException("Failed to initialize database connection " +  connectionString, ex);
-        //}     
+          
     }
 
-    public string initializeFullAirQuality()
+    public async Task<string> initializeFullAirQuality()
     {
             // get air quality data from sample data
-            string path = FileSystem.AppDataDirectory;
+            //string path = FileSystem.AppDataDirectory;
             var DataFile = @"Data/Air_quality.csv";
 
 
@@ -130,10 +136,10 @@ public class readSampleData
             List<string> Metadata = readMeta();
             // lines 2 - 5 / index 1 - 4 are about air quality sensors
 
-            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 1, double.Parse(longitude),double.Parse(latitude)));// nitrogen sensor
-            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 2, double.Parse(longitude),double.Parse(latitude))); // sulphur dioxide sensor
-            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 3, double.Parse(longitude),double.Parse(latitude))); // pm2.5 sensor
-            Task.Run(async () => await  metaToDatabaseSensor(Metadata, 4, double.Parse(longitude),double.Parse(latitude))); // pm10 sensor
+            await  metaToDatabaseSensor(Metadata, 1, double.Parse(longitude),double.Parse(latitude));// nitrogen sensor
+            await  metaToDatabaseSensor(Metadata, 2, double.Parse(longitude),double.Parse(latitude)); // sulphur dioxide sensor
+            await  metaToDatabaseSensor(Metadata, 3, double.Parse(longitude),double.Parse(latitude)); // pm2.5 sensor
+            await  metaToDatabaseSensor(Metadata, 4, double.Parse(longitude),double.Parse(latitude)); // pm10 sensor
 
             // this produces an sensor reading for the sensor reading table
             // the air quality sample data has its actual readings start at line 11, or index 10
@@ -147,23 +153,17 @@ public class readSampleData
                     var values = line.Split(',');
 
                     string dateString = values[0] + " " + values[1];
-                    string format = "dd/MM/yyyy HH:mm:ss"; // day/month/year 24-hour format
-                    CultureInfo provider = CultureInfo.InvariantCulture;
-                    if(DateTime.TryParseExact(dateString, format, provider, System.Globalization.DateTimeStyles.None, out DateTime dateResult))
+
+                    bool checkReadingExists = await _database.DoesSensorReadingExist(dateString, "Nitrogen dioxide");
+
+                    if (!checkReadingExists)
                     {
-                            DateTime parsedDate = DateTime.ParseExact(dateString, format, provider);
-                            // here is where we add the reading to the reading table in the database
-                            //DatabaseRepository.AddSensorReading(0, double.Parse(values[2]), parsedDate, 0); // nitrogen reading
-                            //DatabaseRepository.AddSensorReading(1, double.Parse(values[3]), parsedDate, 0); // sulphur dioxide reading
-                            //DatabaseRepository.AddSensorReading(2, double.Parse(values[4]), parsedDate, 0); // pm2.5 reading
-                           // DatabaseRepository.AddSensorReading(3, double.Parse(values[5]), parsedDate, 0); // pm10 reading
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrogen dioxide", sensor_value=float.Parse(values[2]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Sulphur dioxide", sensor_value=float.Parse(values[3]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "PM2.5 particulate matter (Hourly measured)", sensor_value=float.Parse(values[4]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "PM10 particulate matter (Hourly measured)", sensor_value=float.Parse(values[5]), timestamp = dateString});
 
                     }
-
-
-
-
-
                 }
             }
             return lines.ElementAt(10);

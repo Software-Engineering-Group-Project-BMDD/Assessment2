@@ -33,7 +33,6 @@ public class MainPageViewModel : ObservableObject
     private void ViewSensorStatus()
     {
 
-
         
         Shell.Current.GoToAsync("//SensorStatus");
     }

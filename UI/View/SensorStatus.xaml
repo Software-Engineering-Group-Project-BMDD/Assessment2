@@ -12,6 +12,8 @@
             Text="Welcome to the sensor status page!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label
+            Text="{Binding SensorCount}"/>
 <!--
         <Picker x:Name="sensorPicker"
                 Title="What sensots do you want to review?">

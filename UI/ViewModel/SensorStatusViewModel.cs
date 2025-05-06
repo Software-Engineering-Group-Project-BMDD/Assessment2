@@ -6,6 +6,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.UI.View;
 using MauiApp1.UI.Model;
+//using Kotlin.Properties;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MauiApp1.UI.ViewModel;
 public class SensorStatusViewModel : ObservableObject
@@ -16,12 +18,16 @@ public class SensorStatusViewModel : ObservableObject
     public ObservableCollection<Sensor> Sensors { get; set; } = new ObservableCollection<Sensor>();
 
     public IAsyncRelayCommand ViewStatusCommand { get; }
+    
+    public string SensorCount { get; set;} = "Hello world";
+
 
 
 	public SensorStatusViewModel(SensorDatabase sensorDatabase)
     {
         _database = sensorDatabase;
         ViewStatusCommand = new AsyncRelayCommand(ViewSensorStatus);
+        // SensorCount = " The number of sensors here are " + Sensors.Count().ToString();
 
 	}
 	
@@ -34,10 +40,19 @@ public class SensorStatusViewModel : ObservableObject
         {
             Sensors.Add(sensor);
         }
+        SensorCount = " The number of sensors here are " + Sensors.Count().ToString();
     }
-    public async Task ViewSensorStatus()
+    public async Task<int> ViewSensorStatus()
     {
+        var sensors = await _database.GetSensorsAsync();
 
+        foreach (var sensor in sensors)
+        {
+            Sensors.Add(sensor);
+        }
+
+        SensorCount = " The number of sensors here are up to " + Sensors.Count().ToString();
+        return 1;
     }
 	void showAirStatus(string row)
 	{
