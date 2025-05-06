@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.Libs.Core.MVVM.Views
+  commentId: N:MauiApp1.Libs.Core.MVVM.Views
+  id: MauiApp1.Libs.Core.MVVM.Views
+  children:
+  - MauiApp1.Libs.Core.MVVM.Views.WeatherPage
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.Libs.Core.MVVM.Views
+  nameWithType: MauiApp1.Libs.Core.MVVM.Views
+  fullName: MauiApp1.Libs.Core.MVVM.Views
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.Libs.Core.MVVM.Views.WeatherPage
+  commentId: T:MauiApp1.Libs.Core.MVVM.Views.WeatherPage
+  href: MauiApp1.Libs.Core.MVVM.Views.WeatherPage.html
+  name: WeatherPage
+  nameWithType: WeatherPage
+  fullName: MauiApp1.Libs.Core.MVVM.Views.WeatherPage

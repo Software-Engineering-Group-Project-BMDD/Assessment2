@@ -6,26 +6,29 @@ using System.Windows.Input;
 
 namespace MauiApp1.Libs.Core.MVVM.ViewModels
 {
-
-    // i consider this class to be a thin data controller, with property change updates
+    /// <summary>
+    /// A ViewModel class that serves as a controller for weather data, 
+    /// responsible for handling the weather data and managing location changes.
+    /// Implements INotifyPropertyChanged to notify the UI of property changes.
+    /// </summary>
     public class WeatherViewModel : INotifyPropertyChanged
     {
-
-        // a get only WeatherData property 
+        /// <summary>
+        /// Gets the WeatherData model which contains the actual weather data.
+        /// This is a read-only property, and the data is updated via commands.
+        /// </summary>
         public WeatherDataModel WeatherData { get; } = new WeatherDataModel();
 
-
-        // List of available location IDs, turned it into a property 
+        /// <summary>
+        /// List of available location IDs.
+        /// This property holds the IDs of all locations for which weather data can be displayed.
+        /// </summary>
         private List<int> _locationIds = new List<int>();
         public List<int> LocationIds
         {
-            // getter
             get => _locationIds;
-
-            // setter
             set
             {
-                // null check
                 if (_locationIds != value)
                 {
                     _locationIds = value;
@@ -34,90 +37,105 @@ namespace MauiApp1.Libs.Core.MVVM.ViewModels
             }
         }
 
-        // an intial value used for a counter
+        /// <summary>
+        /// The current index of the location in the LocationIds list.
+        /// Used to track the current location when cycling through the list.
+        /// </summary>
         private int _currentLocationIndex = 0;
 
-        // Command to go to the next location
+        /// <summary>
+        /// Command to go to the next location in the LocationIds list.
+        /// </summary>
         public ICommand NextLocationCommand { get; }
 
-        // Command to go to the previous location
+        /// <summary>
+        /// Command to go to the previous location in the LocationIds list.
+        /// </summary>
         public ICommand PreviousLocationCommand { get; }
 
-
-        // class constructor
+        /// <summary>
+        /// Initializes the ViewModel, sets up commands, and starts the process of initializing location IDs.
+        /// </summary>
         public WeatherViewModel()
         {
-
-            // Initialize the commands
-            // up teh iteration id
+            // Initialize commands to handle location navigation
             NextLocationCommand = new Command(async () => await ChangeLocation(true));
-
-            // down the iterations
             PreviousLocationCommand = new Command(async () => await ChangeLocation(false));
 
-            // discrd for safety to start teh process for initlaising the ids
+            // Initialize the location data asynchronously
             _ = InitializeAsync();
         }
 
-        // this methods garb teh location amount, dsiplay the message and updates thelocal property
+        /// <summary>
+        /// Asynchronously initializes the weather data by counting locations and populating the LocationIds list.
+        /// It retrieves the number of locations and updates the LocationIds property accordingly.
+        /// </summary>
         public async Task InitializeAsync()
         {
-            // Run the task to count the locations and get the count
+            // Retrieve the number of locations from the WeatherData model
             int locationCount = await WeatherData.CountLocationsAsync();
 
-            // Debug the outcome of the SQL query
+            // Log the number of locations for debugging
             Debug.WriteLine($"Number of locations: {locationCount}");
 
-            // Update the list with the number of locations 
+            // Initialize the LocationIds list based on the number of locations
             LocationIds = new List<int>(locationCount);
 
-            // Additional initialization logic here, start at 1 like the databse entry, + 1 on list match the real value
+            // Populate the LocationIds list with values from 1 to locationCount
             for (int i = 1; i < locationCount + 1; i++)
             {
-                // update the the property
                 LocationIds.Add(i);
             }
 
-            // Notify the UI that LocationIds has been updated
+            // Notify the UI that the LocationIds property has been updated
             OnPropertyChanged(nameof(LocationIds));
         }
 
-
-
-        // update and refresh the data based on a location id
+        /// <summary>
+        /// Loads the weather data for a specific location ID.
+        /// This method triggers the WeatherData model to load weather data based on the location ID.
+        /// </summary>
+        /// <param name="locationId">The ID of the location to load weather data for.</param>
         public async Task LoadWeatherData(int locationId)
         {
             await WeatherData.LoadData(locationId);
         }
 
-
-        // Change the location ID (either next or previous)
+        /// <summary>
+        /// Changes the current location either to the next or previous location in the LocationIds list.
+        /// The index is updated based on the provided direction (next or previous).
+        /// </summary>
+        /// <param name="isNext">A boolean flag indicating the direction to move (true for next, false for previous).</param>
         private async Task ChangeLocation(bool isNext)
         {
-            // bool control to choose direction
             if (isNext)
             {
-                // a smart use of modulus to allow reseting backing to 0 after reaching the limit
+                // Move to the next location in the list and wrap around to 0 if at the end
                 _currentLocationIndex = (_currentLocationIndex + 1) % _locationIds.Count;
             }
             else
             {
-                // a smart use of modulus to allow reseting backing the end 
+                // Move to the previous location in the list and wrap around to the last element if at the start
                 _currentLocationIndex = (_currentLocationIndex - 1 + _locationIds.Count) % _locationIds.Count;
             }
 
-            // grab the id 
+            // Retrieve the location ID from the updated index
             int newLocationId = _locationIds[_currentLocationIndex];
 
-            // load teh data with that id
+            // Load weather data for the new location ID
             await WeatherData.LoadData(newLocationId);
         }
 
-
-        // event for changes
+        /// <summary>
+        /// Event raised when a property changes. Implements INotifyPropertyChanged.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // the magic method for property changes
+        /// <summary>
+        /// Helper method to raise the PropertyChanged event for the specified property.
+        /// This method is invoked whenever a property value is updated.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

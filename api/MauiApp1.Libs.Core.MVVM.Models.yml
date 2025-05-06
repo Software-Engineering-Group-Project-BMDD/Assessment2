@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.Libs.Core.MVVM.Models
+  commentId: N:MauiApp1.Libs.Core.MVVM.Models
+  id: MauiApp1.Libs.Core.MVVM.Models
+  children:
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  - MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel
+  - MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.Libs.Core.MVVM.Models
+  nameWithType: MauiApp1.Libs.Core.MVVM.Models
+  fullName: MauiApp1.Libs.Core.MVVM.Models
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  commentId: T:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  parent: MauiApp1.Libs.Core.MVVM.Models
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html
+  name: LocationInfoModel
+  nameWithType: LocationInfoModel
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+- uid: MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel
+  commentId: T:MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel
+  parent: MauiApp1.Libs.Core.MVVM.Models
+  href: MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel.html
+  name: WeatherDataModel
+  nameWithType: WeatherDataModel
+  fullName: MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel
+- uid: MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel
+  commentId: T:MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel
+  href: MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel.html
+  name: WeatherMeasurementsModel
+  nameWithType: WeatherMeasurementsModel
+  fullName: MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel
+- uid: MauiApp1.Libs.Core.MVVM.Models
+  commentId: N:MauiApp1.Libs.Core.MVVM.Models
+  href: MauiApp1.html
+  name: MauiApp1.Libs.Core.MVVM.Models
+  nameWithType: MauiApp1.Libs.Core.MVVM.Models
+  fullName: MauiApp1.Libs.Core.MVVM.Models
+  spec.csharp:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.Libs
+    name: Libs
+    href: MauiApp1.Libs.html
+  - name: .
+  - uid: MauiApp1.Libs.Core
+    name: Core
+    href: MauiApp1.Libs.Core.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM
+    name: MVVM
+    href: MauiApp1.Libs.Core.MVVM.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM.Models
+    name: Models
+    href: MauiApp1.Libs.Core.MVVM.Models.html
+  spec.vb:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.Libs
+    name: Libs
+    href: MauiApp1.Libs.html
+  - name: .
+  - uid: MauiApp1.Libs.Core
+    name: Core
+    href: MauiApp1.Libs.Core.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM
+    name: MVVM
+    href: MauiApp1.Libs.Core.MVVM.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM.Models
+    name: Models
+    href: MauiApp1.Libs.Core.MVVM.Models.html

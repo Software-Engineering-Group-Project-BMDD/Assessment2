@@ -69,4 +69,11 @@
 	  <Folder Include="UML Diagram\Neil Mck\" />
 	</ItemGroup>
 
+	<!-- for docfx -->
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+	</PropertyGroup>
+
+
 </Project>

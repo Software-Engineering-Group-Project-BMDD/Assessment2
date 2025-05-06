@@ -1,0 +1,74 @@
+### YamlMime:TableOfContent
+items:
+- uid: MauiApp1
+  name: MauiApp1
+  type: Namespace
+  items:
+  - uid: MauiApp1.App
+    name: App
+    type: Class
+  - uid: MauiApp1.AppShell
+    name: AppShell
+    type: Class
+  - uid: MauiApp1.MainActivity
+    name: MainActivity
+    type: Class
+  - uid: MauiApp1.MainApplication
+    name: MainApplication
+    type: Class
+  - uid: MauiApp1.MainPage
+    name: MainPage
+    type: Class
+  - uid: MauiApp1.MauiProgram
+    name: MauiProgram
+    type: Class
+  - uid: MauiApp1.Resource
+    name: Resource
+    type: Class
+- uid: MauiApp1.Libs.Core.MVVM.Converters
+  name: MauiApp1.Libs.Core.MVVM.Converters
+  type: Namespace
+  items:
+  - uid: MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter
+    name: IntToBoolConverter
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter
+    name: IntToVisibilityConverter
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter
+    name: InverseBoolConverter
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter
+    name: NullToVisibilityConverter
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter
+    name: WindDirectionToCardinalConverter
+    type: Class
+- uid: MauiApp1.Libs.Core.MVVM.Models
+  name: MauiApp1.Libs.Core.MVVM.Models
+  type: Namespace
+  items:
+  - uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+    name: LocationInfoModel
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Models.WeatherDataModel
+    name: WeatherDataModel
+    type: Class
+  - uid: MauiApp1.Libs.Core.MVVM.Models.WeatherMeasurementsModel
+    name: WeatherMeasurementsModel
+    type: Class
+- uid: MauiApp1.Libs.Core.MVVM.ViewModels
+  name: MauiApp1.Libs.Core.MVVM.ViewModels
+  type: Namespace
+  items:
+  - uid: MauiApp1.Libs.Core.MVVM.ViewModels.WeatherViewModel
+    name: WeatherViewModel
+    type: Class
+- uid: MauiApp1.Libs.Core.MVVM.Views
+  name: MauiApp1.Libs.Core.MVVM.Views
+  type: Namespace
+  items:
+  - uid: MauiApp1.Libs.Core.MVVM.Views.WeatherPage
+    name: WeatherPage
+    type: Class
+memberLayout: SamePage

@@ -1,14 +1,15 @@
 ﻿using System.Globalization;
 
-// this is basically a hand helper or utility class, i hae left this here inside the class library for ease and access
 namespace MauiApp1.Libs.Core.MVVM.Converters
 {
-    // for hiding and showing labels if no data
+    /// <summary>
+    /// Converts a null value to a boolean indicating visibility.
+    /// Returns true if the value is not null; otherwise, false.
+    /// </summary>
     public class NullToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Return true if value is not null, false otherwise
             return value != null;
         }
 
@@ -18,36 +19,34 @@ namespace MauiApp1.Libs.Core.MVVM.Converters
         }
     }
 
-    // this flip true and false and vice versa
+    /// <summary>
+    /// Inverts a boolean value. Converts true to false and false to true.
+    /// </summary>
     public class InverseBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Invert the boolean value
             if (value is bool boolValue)
-            {
                 return !boolValue;
-            }
             return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Also invert when converting back
             if (value is bool boolValue)
-            {
                 return !boolValue;
-            }
             return false;
         }
     }
 
-    // this is for checking against o values in a list 
+    /// <summary>
+    /// Converts an integer to a boolean. Returns true if the integer is greater than 0.
+    /// Useful for checking if collections have items.
+    /// </summary>
     public class IntToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Converts integer > 0 to true, otherwise false
             return value is int count && count > 0;
         }
 
@@ -57,7 +56,9 @@ namespace MauiApp1.Libs.Core.MVVM.Converters
         }
     }
 
-    // this is for directional conversion from a numeral degress, compass 
+    /// <summary>
+    /// Converts wind direction in degrees to a cardinal compass point (e.g., N, NE, E, etc.).
+    /// </summary>
     public class WindDirectionToCardinalConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -70,20 +71,20 @@ namespace MauiApp1.Libs.Core.MVVM.Converters
             return "N/A";
         }
 
-
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            // we could convert back but would like accuracy due to conformity
             throw new NotImplementedException();
         }
     }
 
-    // similar as int to bool for visibility    
+    /// <summary>
+    /// Converts an integer to a boolean for visibility purposes.
+    /// Returns true if the integer is greater than 0.
+    /// </summary>
     public class IntToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             => (value is int count && count > 0);
-
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {

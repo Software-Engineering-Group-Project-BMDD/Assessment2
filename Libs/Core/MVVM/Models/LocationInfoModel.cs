@@ -3,10 +3,17 @@ using System.Runtime.CompilerServices;
 
 namespace MauiApp1.Libs.Core.MVVM.Models
 {
-    // a generic data model for handling site data corresponding to teh sampple weather data
+    // A generic data model for handling site data corresponding to the sample weather data
+
+    /// <summary>
+    /// Represents location information, including geographical coordinates and elevation.
+    /// Implements the <see cref="INotifyPropertyChanged"/> interface to notify changes in property values.
+    /// </summary>
     public class LocationInfoModel : INotifyPropertyChanged
     {
-        // Name for city or area
+        /// <summary>
+        /// The name of the city or area.
+        /// </summary>
         private string _name = string.Empty;
         public string Name
         {
@@ -17,14 +24,15 @@ namespace MauiApp1.Libs.Core.MVVM.Models
                 {
                     _name = value;
 
-                    // update if changed using the interface 
+                    // Updates if changed using the INotifyPropertyChanged interface 
                     OnPropertyChanged();
                 }
             }
         }
 
-
-        // latitude
+        /// <summary>
+        /// The latitude of the location, expressed in decimal degrees.
+        /// </summary>
         private double _latitude = 0.0;
         public double Latitude
         {
@@ -39,7 +47,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        //longittude
+        /// <summary>
+        /// The longitude of the location, expressed in decimal degrees.
+        /// </summary>
         private double _longitude = 0.0;
         public double Longitude
         {
@@ -54,7 +64,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // meters above or below ground
+        /// <summary>
+        /// The elevation of the location, in meters, above or below sea level.
+        /// </summary>
         private int _elevation = 0;
         public int Elevation
         {
@@ -69,7 +81,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // offset but more precis minutes
+        /// <summary>
+        /// The UTC offset of the location, in minutes.
+        /// </summary>
         private int _utcOffset = 0;
         public int UtcOffset
         {
@@ -84,7 +98,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // GMT is hourly based
+        /// <summary>
+        /// The timezone of the location, represented in a string (e.g., "GMT").
+        /// </summary>
         private string _timezone = "GMT";
         public string Timezone
         {
@@ -99,10 +115,15 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // a typical event handler
+        /// <summary>
+        /// Event raised when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // this is a magic methid to update the property, it raises the changed event and observers or subscribers update
+        /// <summary>
+        /// Raises the PropertyChanged event to notify subscribers of property changes.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

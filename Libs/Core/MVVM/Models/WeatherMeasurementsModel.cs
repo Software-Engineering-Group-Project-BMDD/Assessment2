@@ -3,10 +3,16 @@ using System.Runtime.CompilerServices;
 
 namespace MauiApp1.Libs.Core.MVVM.Models
 {
-    // this is the measurements for teh weather data, properties 
+    /// <summary>
+    /// Represents the weather measurements for a specific location at a given time.
+    /// Includes temperature, humidity, wind speed, and wind direction data.
+    /// Implements INotifyPropertyChanged to notify of property changes.
+    /// </summary>
     public class WeatherMeasurementsModel : INotifyPropertyChanged
     {
-        // a nullable timestamp
+        /// <summary>
+        /// The timestamp when the weather measurement was taken. Nullable to represent missing or unknown times.
+        /// </summary>
         private DateTime? _time;
         public DateTime? Time
         {
@@ -21,7 +27,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // tempaerature in celcuis
+        /// <summary>
+        /// The temperature in Celsius recorded at the time of the measurement.
+        /// </summary>
         private double _temperature;
         public double Temperature
         {
@@ -36,7 +44,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // humidty 1- 100 percent
+        /// <summary>
+        /// The humidity percentage (0-100) recorded at the time of the measurement.
+        /// </summary>
         private int _humidity;
         public int Humidity
         {
@@ -51,7 +61,9 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // wind speed in meters per second
+        /// <summary>
+        /// The wind speed in meters per second recorded at the time of the measurement.
+        /// </summary>
         private double _windSpeed;
         public double WindSpeed
         {
@@ -66,7 +78,10 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
-        // wind direction in 360 degress, this can be converted later on to a cardinal systems N, E, S, W
+        /// <summary>
+        /// The wind direction in degrees (0-360) recorded at the time of the measurement.
+        /// This can be converted to a cardinal direction (N, E, S, W) later on if needed.
+        /// </summary>
         private int _windDirection;
         public int WindDirection
         {
@@ -81,13 +96,24 @@ namespace MauiApp1.Libs.Core.MVVM.Models
             }
         }
 
+        /// <summary>
+        /// Event triggered when a property is changed. Implements INotifyPropertyChanged.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Helper method to raise the PropertyChanged event for property change notifications.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Returns a string representation of the weather measurement, including time, temperature, and humidity.
+        /// </summary>
+        /// <returns>A formatted string representing the weather data.</returns>
         public override string ToString()
         {
             return $"Time: {Time:g}, Temp: {Temperature}°C, Humidity: {Humidity}%";
