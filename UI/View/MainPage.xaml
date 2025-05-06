@@ -9,6 +9,8 @@
                         Command="{Binding NavigateToAdminCommand}"/>
                 <Button Text="View Sensor Locations"
                         Command="{Binding NavigateToSensorLocation}"/>
+                <Button Text="View Sensor status"
+                        Command="{Binding ViewSensorStatusCommand}"/>
         </VerticalStackLayout>
 
 </ContentPage>

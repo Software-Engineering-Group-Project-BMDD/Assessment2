@@ -74,6 +74,9 @@
 	  <Compile Update="UI\View\SensorView.xaml.cs">
 	    <DependentUpon>SensorView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="UI\View\SensorStatus.xaml.cs">
+	    <DependentUpon>SensorStatus.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

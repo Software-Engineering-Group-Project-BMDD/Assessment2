@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.UI.ViewModel"
+             x:Class="MauiApp1.UI.View.SensorStatus"
+             Title="SensorStatus">
+            
+    <VerticalStackLayout>
+
+      
+        <Label 
+            Text="Welcome to the sensor status page!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+<!--
+        <Picker x:Name="sensorPicker"
+                Title="What sensots do you want to review?">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                <x:String>Air</x:String>
+                <x:String>Water</x:String>
+                <x:String>Weather</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+-->
+        <!-- check Button -->
+        <Button Text="View Status"
+            Command="{Binding BindingContext.ViewStatusCommand}"/>
+        <Label 
+            Text="{Binding SensorsSelectedLabel}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    
+    </VerticalStackLayout>
+</ContentPage>

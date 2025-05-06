@@ -17,9 +17,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+
 
 		builder.Services.AddSingleton<SensorDatabase>();
 		builder.Services.AddSingleton<App>();
@@ -32,6 +30,9 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<SensorViewModel>();
 		builder.Services.AddSingleton<SensorView>();
+
+		builder.Services.AddTransient<SensorStatusViewModel>();
+		builder.Services.AddSingleton<SensorStatus>();
 
 		return builder.Build();
 	}
