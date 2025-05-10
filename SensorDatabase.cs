@@ -13,18 +13,21 @@ public class SensorDatabase
     public async Task Populate()
     {
         //var sensors = await GetSensorsAsync();
-        //if (sensors.Count() > 0)
+        //if (sensors.Count() == 0)
         //{
-        //    return;
+        //    await SaveItemAsync(new Sensor { Type = "Weather", Latitude = 55.008785, Longitude = -3.5856323 });
+        //    await SaveItemAsync(new Sensor { Type = "Air", Latitude = 55.94476, Longitude = -3.183991 });
+        //    await SaveItemAsync(new Sensor { Type = "Water", Latitude = 55.8632306, Longitude = -3.2547047 });
         //}
-
+        
         readSampleData readS = new readSampleData(this);
 
+        // await DeleteAllSensorsAsync();
         await readS.initializeFullAirQuality();
+        await readS.initializeFullWaterQuality();
+        await readS.initializeFullWeatherData();
 
-        //await SaveItemAsync(new Sensor { Type = "Weather", Latitude = 55.008785, Longitude = -3.5856323 });
-        //await SaveItemAsync(new Sensor { Type = "Air", Latitude = 55.94476, Longitude = -3.183991 });
-        //await SaveItemAsync(new Sensor { Type = "Water", Latitude = 55.8632306, Longitude = -3.2547047 });
+        //
     }
 
     public async Task Backup()
@@ -101,13 +104,31 @@ public class SensorDatabase
             return await database.InsertAsync(sensor);
         }
     }
+    public async Task<int> UpdateSensorDataAsync(Sensor sensor)
+    {
+        await Init();
+      
+        return await database.UpdateAsync(sensor);
+        
+    }
 
     public async Task<int> DeleteItemAsync(Sensor sensor)
     {
         await Init();
         return await database.DeleteAsync(sensor);
     }
+    public async Task<int> DeleteAllSensorsAsync()
+    {
+        await Init();
 
+        var sensors = await GetSensorsAsync();
+        if (sensors.Count() > 0)
+        {
+            foreach (Sensor sen in sensors)
+                await database.DeleteAsync(sen);
+        }
+        return 1;
+    }
     public async Task<List<SensorReading>> GetSensorReadingsAsync()
     {
         await Init();
@@ -123,8 +144,6 @@ public class SensorDatabase
         }
         else
         {
-
-
             return await database.InsertAsync(sensorR);
         }
     }
@@ -144,6 +163,12 @@ public class SensorDatabase
             return false;
 
     }
-
+    public async Task<SensorReading> GetFinalSensorReadingAsync(string Quantity)
+    {
+        await Init();
+        return await database.Table<SensorReading>().Where(s => s.Sensor_Quantity == Quantity)
+                    .OrderByDescending(s => s.ID)
+                    .FirstOrDefaultAsync();
+    }
  
 }
