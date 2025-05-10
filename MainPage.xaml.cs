@@ -1,4 +1,6 @@
-﻿namespace MauiApp1
+﻿using MauiApp1.Libs.Core.MVVM.Views;
+
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
@@ -7,19 +9,18 @@
         public MainPage()
         {
             InitializeComponent();
+
+
+            WeatherPage weatherPage = new WeatherPage();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        // create a navigation to the weather page
+        private async void NavigateToWeatherPage(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            await Navigation.PushAsync(new WeatherPage());
         }
+
+
     }
 
 }

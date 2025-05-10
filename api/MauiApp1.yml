@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1
+  commentId: N:MauiApp1
+  id: MauiApp1
+  children:
+  - MauiApp1.App
+  - MauiApp1.AppShell
+  - MauiApp1.MainActivity
+  - MauiApp1.MainApplication
+  - MauiApp1.MainPage
+  - MauiApp1.MauiProgram
+  - MauiApp1.Resource
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1
+  nameWithType: MauiApp1
+  fullName: MauiApp1
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.App
+  commentId: T:MauiApp1.App
+  href: MauiApp1.App.html
+  name: App
+  nameWithType: App
+  fullName: MauiApp1.App
+- uid: MauiApp1.AppShell
+  commentId: T:MauiApp1.AppShell
+  href: MauiApp1.AppShell.html
+  name: AppShell
+  nameWithType: AppShell
+  fullName: MauiApp1.AppShell
+- uid: MauiApp1.MainPage
+  commentId: T:MauiApp1.MainPage
+  href: MauiApp1.MainPage.html
+  name: MainPage
+  nameWithType: MainPage
+  fullName: MauiApp1.MainPage
+- uid: MauiApp1.MauiProgram
+  commentId: T:MauiApp1.MauiProgram
+  href: MauiApp1.MauiProgram.html
+  name: MauiProgram
+  nameWithType: MauiProgram
+  fullName: MauiApp1.MauiProgram
+- uid: MauiApp1.MainActivity
+  commentId: T:MauiApp1.MainActivity
+  href: MauiApp1.MainActivity.html
+  name: MainActivity
+  nameWithType: MainActivity
+  fullName: MauiApp1.MainActivity
+- uid: MauiApp1.MainApplication
+  commentId: T:MauiApp1.MainApplication
+  href: MauiApp1.MainApplication.html
+  name: MainApplication
+  nameWithType: MainApplication
+  fullName: MauiApp1.MainApplication
+- uid: MauiApp1.Resource
+  commentId: T:MauiApp1.Resource
+  href: MauiApp1.Resource.html
+  name: Resource
+  nameWithType: Resource
+  fullName: MauiApp1.Resource

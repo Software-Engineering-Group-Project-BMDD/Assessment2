@@ -5,7 +5,7 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
+            
             Spacing="25">
 
             <StackLayout>
@@ -25,6 +25,14 @@
                 <Picker x:Name="Table3Picker" />
                 <CollectionView x:Name="Table3CollectionView" />
             </StackLayout>
+
+            
+            <!-- a simple button for navigation to the weather data -->
+            <Button 
+            Text="Go to Weather Page" 
+            Clicked="NavigateToWeatherPage" 
+            HorizontalOptions="Center" />
+
 
         </VerticalStackLayout>
     </ScrollView>

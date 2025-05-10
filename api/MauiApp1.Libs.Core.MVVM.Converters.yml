@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.Libs.Core.MVVM.Converters
+  commentId: N:MauiApp1.Libs.Core.MVVM.Converters
+  id: MauiApp1.Libs.Core.MVVM.Converters
+  children:
+  - MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter
+  - MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter
+  - MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter
+  - MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter
+  - MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter
+  langs:
+  - csharp
+  - vb
+  name: MauiApp1.Libs.Core.MVVM.Converters
+  nameWithType: MauiApp1.Libs.Core.MVVM.Converters
+  fullName: MauiApp1.Libs.Core.MVVM.Converters
+  type: Namespace
+  assemblies:
+  - MauiApp1
+references:
+- uid: MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter
+  commentId: T:MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter
+  href: MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter.html
+  name: NullToVisibilityConverter
+  nameWithType: NullToVisibilityConverter
+  fullName: MauiApp1.Libs.Core.MVVM.Converters.NullToVisibilityConverter
+- uid: MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter
+  commentId: T:MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter
+  href: MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter.html
+  name: InverseBoolConverter
+  nameWithType: InverseBoolConverter
+  fullName: MauiApp1.Libs.Core.MVVM.Converters.InverseBoolConverter
+- uid: MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter
+  commentId: T:MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter
+  href: MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter.html
+  name: IntToBoolConverter
+  nameWithType: IntToBoolConverter
+  fullName: MauiApp1.Libs.Core.MVVM.Converters.IntToBoolConverter
+- uid: MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter
+  commentId: T:MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter
+  href: MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter.html
+  name: WindDirectionToCardinalConverter
+  nameWithType: WindDirectionToCardinalConverter
+  fullName: MauiApp1.Libs.Core.MVVM.Converters.WindDirectionToCardinalConverter
+- uid: MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter
+  commentId: T:MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter
+  href: MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter.html
+  name: IntToVisibilityConverter
+  nameWithType: IntToVisibilityConverter
+  fullName: MauiApp1.Libs.Core.MVVM.Converters.IntToVisibilityConverter

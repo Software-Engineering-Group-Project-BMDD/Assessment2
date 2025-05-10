@@ -1,0 +1,703 @@
+### YamlMime:ManagedReference
+items:
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  commentId: T:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  id: LocationInfoModel
+  parent: MauiApp1.Libs.Core.MVVM.Models
+  children:
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged(System.String)
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.PropertyChanged
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+  - MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+  langs:
+  - csharp
+  - vb
+  name: LocationInfoModel
+  nameWithType: LocationInfoModel
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  type: Class
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: LocationInfoModel
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 11
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  summary: >-
+    Represents location information, including geographical coordinates and elevation.
+
+    Implements the <xref href="System.ComponentModel.INotifyPropertyChanged" data-throw-if-not-resolved="false"></xref> interface to notify changes in property values.
+  example: []
+  syntax:
+    content: 'public class LocationInfoModel : INotifyPropertyChanged'
+    content.vb: Public Class LocationInfoModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+  id: Name
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: LocationInfoModel.Name
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: Name
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 17
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+  id: Latitude
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: Latitude
+  nameWithType: LocationInfoModel.Latitude
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: Latitude
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 36
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public double Latitude { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Latitude As Double
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+  id: Longitude
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: Longitude
+  nameWithType: LocationInfoModel.Longitude
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: Longitude
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 53
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public double Longitude { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Longitude As Double
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+  id: Elevation
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: Elevation
+  nameWithType: LocationInfoModel.Elevation
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: Elevation
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 70
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public int Elevation { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Elevation As Integer
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+  id: UtcOffset
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: UtcOffset
+  nameWithType: LocationInfoModel.UtcOffset
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: UtcOffset
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 87
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public int UtcOffset { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property UtcOffset As Integer
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+  commentId: P:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+  id: Timezone
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: Timezone
+  nameWithType: LocationInfoModel.Timezone
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+  type: Property
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: Timezone
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 104
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  syntax:
+    content: public string Timezone { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Timezone As String
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone*
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.PropertyChanged
+  commentId: E:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.PropertyChanged
+  id: PropertyChanged
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: LocationInfoModel.PropertyChanged
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: PropertyChanged
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 120
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  summary: Event raised when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged(System.String)
+  commentId: M:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string)
+  nameWithType: LocationInfoModel.OnPropertyChanged(string)
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged(string)
+  type: Method
+  source:
+    remote:
+      path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+      branch: neil-weather-start
+      repo: https://github.com/Software-Engineering-Group-Project-BMDD/Assessment2.git
+    id: OnPropertyChanged
+    path: Libs/Core/MVVM/Models/LocationInfoModel.cs
+    startLine: 126
+  assemblies:
+  - MauiApp1
+  namespace: MauiApp1.Libs.Core.MVVM.Models
+  summary: Raises the PropertyChanged event to notify subscribers of property changes.
+  example: []
+  syntax:
+    content: protected virtual void OnPropertyChanged(string propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+      description: The name of the property that changed.
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged*
+  nameWithType.vb: LocationInfoModel.OnPropertyChanged(String)
+  fullName.vb: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+references:
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: MauiApp1.Libs.Core.MVVM.Models
+  commentId: N:MauiApp1.Libs.Core.MVVM.Models
+  href: MauiApp1.html
+  name: MauiApp1.Libs.Core.MVVM.Models
+  nameWithType: MauiApp1.Libs.Core.MVVM.Models
+  fullName: MauiApp1.Libs.Core.MVVM.Models
+  spec.csharp:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.Libs
+    name: Libs
+    href: MauiApp1.Libs.html
+  - name: .
+  - uid: MauiApp1.Libs.Core
+    name: Core
+    href: MauiApp1.Libs.Core.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM
+    name: MVVM
+    href: MauiApp1.Libs.Core.MVVM.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM.Models
+    name: Models
+    href: MauiApp1.Libs.Core.MVVM.Models.html
+  spec.vb:
+  - uid: MauiApp1
+    name: MauiApp1
+    href: MauiApp1.html
+  - name: .
+  - uid: MauiApp1.Libs
+    name: Libs
+    href: MauiApp1.Libs.html
+  - name: .
+  - uid: MauiApp1.Libs.Core
+    name: Core
+    href: MauiApp1.Libs.Core.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM
+    name: MVVM
+    href: MauiApp1.Libs.Core.MVVM.html
+  - name: .
+  - uid: MauiApp1.Libs.Core.MVVM.Models
+    name: Models
+    href: MauiApp1.Libs.Core.MVVM.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_Name
+  name: Name
+  nameWithType: LocationInfoModel.Name
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_Latitude
+  name: Latitude
+  nameWithType: LocationInfoModel.Latitude
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Latitude
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_Longitude
+  name: Longitude
+  nameWithType: LocationInfoModel.Longitude
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Longitude
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_Elevation
+  name: Elevation
+  nameWithType: LocationInfoModel.Elevation
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Elevation
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_UtcOffset
+  name: UtcOffset
+  nameWithType: LocationInfoModel.UtcOffset
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.UtcOffset
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_Timezone
+  name: Timezone
+  nameWithType: LocationInfoModel.Timezone
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.Timezone
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged*
+  commentId: Overload:MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged
+  href: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.html#MauiApp1_Libs_Core_MVVM_Models_LocationInfoModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: LocationInfoModel.OnPropertyChanged
+  fullName: MauiApp1.Libs.Core.MVVM.Models.LocationInfoModel.OnPropertyChanged
