@@ -67,12 +67,14 @@ public class SensorDatabase
 
     public async Task<List<Sensor>> GetSensorsAsync()
     {
+        // gets all sensors
         await Init();
         return await database.Table<Sensor>().ToListAsync();
     }
 
     public async Task<bool> DoesSensorExist(string Quantity)
     {
+        // checks if there is a sensor of the quanitiy
         await Init();
 
         // gets all the sensors of the quantity
@@ -89,6 +91,7 @@ public class SensorDatabase
 
     public async Task<Sensor> GetSpecificSensor(string Quantity)
     {
+        // gets sensor of specific quantititu
         await Init();
         // just gets all the snesors of the quantity and gets the first one
         List<Sensor> sensors = await database.Table<Sensor>().Where(s => s.Sensor_Quantity == Quantity).ToListAsync();
@@ -99,6 +102,7 @@ public class SensorDatabase
 
     public async Task<int> SaveItemAsync(Sensor sensor)
     {
+        // saves or updates sensor
         await Init();
         if (sensor.ID != 0)
         {
@@ -111,6 +115,7 @@ public class SensorDatabase
     }
     public async Task<int> UpdateSensorDataAsync(Sensor sensor)
     {
+        // specifically updaaertts sensot
         await Init();
       
         return await database.UpdateAsync(sensor);
@@ -119,11 +124,13 @@ public class SensorDatabase
 
     public async Task<int> DeleteItemAsync(Sensor sensor)
     {
+        // deletes specific sensors
         await Init();
         return await database.DeleteAsync(sensor);
     }
     public async Task<int> DeleteAllSensorsAsync()
     {
+        // deletes all sensor data
         await Init();
 
         var sensors = await GetSensorsAsync();
@@ -136,11 +143,13 @@ public class SensorDatabase
     }
     public async Task<List<SensorReading>> GetSensorReadingsAsync()
     {
+        // gets all sensor readings
         await Init();
         return await database.Table<SensorReading>().ToListAsync();
     }
     public async Task<int> SaveReadingAsync(SensorReading sensorR)
     {
+        // saves a specific reading (or updates)
         await Init();
         // if sensor is not 0, then the autoincrement has worked, meaning it should already be somewhere in the database
         if (sensorR.ID != 0)
@@ -155,6 +164,7 @@ public class SensorDatabase
 
     public async Task<bool> DoesSensorReadingExist(string rtimestamp, string Quantity)
     {
+        // returns bool on if a specific sensor exists
         await Init();
 
         // gets all the sensors of the quantity
@@ -177,7 +187,7 @@ public class SensorDatabase
     }
     public async Task<SensorReading> GetFinalSensorReadingAsync(string Quantity)
     {
-        // 
+        // gets the final reading of a specific quantity
         await Init();
         return await database.Table<SensorReading>().Where(s => s.Sensor_Quantity == Quantity)
                     .OrderByDescending(s => s.ID)
@@ -237,4 +247,22 @@ public class SensorDatabase
         return await database.Table<UserModel>().ToListAsync();
     }
     
+    public async Task<int> SaveIncidentAsync(LoginIncedentModel incedentModel)
+    {
+        // saves a new user
+        await Init();
+        if (incedentModel.ID != 0 )
+        {
+            return await database.UpdateAsync(incedentModel);
+        }
+        else
+        {
+            return await database.InsertAsync(incedentModel);
+        }
+    }
+    public async Task<List<LoginIncedentModel>> GetAllIncidentsAsync ()
+    {
+        await Init();
+        return await database.Table<LoginIncedentModel>().ToListAsync();
+    }
 }

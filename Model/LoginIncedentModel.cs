@@ -10,4 +10,5 @@ public class LoginIncedentModel
 
     public string User {get; set;}
     public string timeStamp{get;set;}
+    public string incidentType{get;set;}
 }
