@@ -17,64 +17,34 @@
         <VerticalStackLayout Padding="20" Spacing="20">
             <!-- Sensor Items -->
             <HorizontalStackLayout Spacing="10">
-                <Image Source="gear_icon.png"
-                       HeightRequest="40"
-                       WidthRequest="40" />
+                <ImageButton Source="sensor_icon.png"
+                             HeightRequest="40"
+                             WidthRequest="40" />
                 <Label Text="Air Quality Sensor"
                        TextColor="White"
                        VerticalOptions="Center" />
-                <HorizontalStackLayout Spacing="5" HorizontalOptions="EndAndExpand">
-                    <Image Source="cloud_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                    <Image Source="signal_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                </HorizontalStackLayout>
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="10">
-                <Image Source="gear_icon.png"
-                       HeightRequest="40"
-                       WidthRequest="40" />
-                <Label Text="Water Quality Sensor"
-                       TextColor="White"
-                       VerticalOptions="Center" />
-                <HorizontalStackLayout Spacing="5" HorizontalOptions="EndAndExpand">
-                    <Image Source="cloud_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                    <Image Source="signal_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                </HorizontalStackLayout>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout Spacing="10">
-                <Image Source="gear_icon.png"
-                       HeightRequest="40"
-                       WidthRequest="40" />
-                <Label Text="Weather Sensor"
-                       TextColor="White"
-                       VerticalOptions="Center" />
-                <HorizontalStackLayout Spacing="5" HorizontalOptions="EndAndExpand">
-                    <Image Source="cloud_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                    <Image Source="signal_icon.png"
-                           HeightRequest="30"
-                           WidthRequest="30" />
-                </HorizontalStackLayout>
-            </HorizontalStackLayout>
-
-            <!-- Button -->
+            <!-- Firmware Update Section -->
             <Button Text="Firmware updates check"
                     TextColor="White"
                     BackgroundColor="Transparent"
                     BorderColor="White"
                     BorderWidth="2"
                     CornerRadius="5"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Command="{Binding StartFirmwareUpdateCommand}" />
+
+            <ProgressBar Progress="{Binding FirmwareUpdateProgress}"
+                         IsVisible="{Binding IsFirmwareUpdating}"
+                         HeightRequest="10"
+                         BackgroundColor="Gray"
+                         ProgressColor="Green"
+                         HorizontalOptions="FillAndExpand" />
+
+            <Label Text="{Binding FirmwareUpdateStatus}"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
