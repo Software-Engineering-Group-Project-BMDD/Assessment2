@@ -1,8 +1,9 @@
 using System;
 using System.IO;
 using System.Text;
-using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite; // Add this using directive at the top of the file
 
+// No other changes are needed as the error is caused by the missing namespace for SqliteConnection.
 namespace MauiApp1
 {
     public class DatabaseInitializer : IDatabaseInitializer
@@ -55,6 +56,10 @@ namespace MauiApp1
                 throw new InvalidOperationException("Failed to create database tables", ex);
             }
         }
+
+        
+
+
 
         private static void SeedDefaultData(SqliteConnection connection)
         {
