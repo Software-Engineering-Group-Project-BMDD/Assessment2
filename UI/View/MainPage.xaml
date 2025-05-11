@@ -13,6 +13,8 @@
                         Command="{Binding ViewSensorStatusCommand}"/>
                 <Button Text="View environmental trends"
                         Command="{Binding NavigateToTrendsCommand}"/>
+                <Button Text="Back To login"
+                        Command="{Binding NavigateToLoginCommand}"/>
         </VerticalStackLayout>
 
 </ContentPage>

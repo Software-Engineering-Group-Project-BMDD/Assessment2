@@ -14,6 +14,7 @@ public class MainPageViewModel : ObservableObject
         NavigateToSensorLocation = new Command(NavigateSensorMap);
         ViewSensorStatusCommand = new Command(ViewSensorStatus);
         NavigateToTrendsCommand = new Command(NavigateToTrends);
+        NavigateToLoginCommand = new Command(NavigateToLogin);
     }
 
     public ICommand NavigateToAdminCommand { get; }
@@ -22,6 +23,9 @@ public class MainPageViewModel : ObservableObject
     public ICommand ViewSensorStatusCommand { get; }
 
     public ICommand NavigateToTrendsCommand {get;}
+    public ICommand NavigateToLoginCommand {get;}
+
+    
     private void NavigateToAdmin()
     {
         Shell.Current.GoToAsync("//AdminView");
@@ -39,5 +43,9 @@ public class MainPageViewModel : ObservableObject
     private void NavigateToTrends()
     {    
         Shell.Current.GoToAsync("//TrendsView");
+    }
+    private void NavigateToLogin()
+    {    
+        Shell.Current.GoToAsync("//LoginView");
     }
 }

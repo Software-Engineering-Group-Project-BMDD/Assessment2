@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.UI.View.LoginView"
+             Title="LoginView">
+    <VerticalStackLayout>
+        <Label 
+            Text="Username"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry
+            Text="{Binding Username}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Label 
+            Text="Password"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry
+            Text="{Binding Password}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Button Text="Login"
+                Command="{Binding LoginCommand}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        <Label 
+            Text="{Binding WarningText}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

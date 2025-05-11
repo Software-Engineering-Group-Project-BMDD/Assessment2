@@ -27,7 +27,11 @@ public class SensorDatabase
         await readS.initializeFullWaterQuality();
         await readS.initializeFullWeatherData();
 
-        //
+        // adds the base users
+        await SaveUserAsync(new UserModel{UserName="EnScientist", Password="En1234",UserType="ES"});
+        await SaveUserAsync(new UserModel{UserName="OpManager", Password="Op234",UserType="OM"});
+        await SaveUserAsync(new UserModel{UserName="Administrator", Password="Ad1234",UserType="Ad"});
+
     }
 
     public async Task Backup()
@@ -57,7 +61,8 @@ public class SensorDatabase
         database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         var result = await database.CreateTableAsync<Sensor>();
         var resultReadings = await database.CreateTableAsync<SensorReading>();
-
+        var resultUsers = await database.CreateTableAsync<UserModel>();
+        var resultincidents = await database.CreateTableAsync<LoginIncedentModel>();
     }
 
     public async Task<List<Sensor>> GetSensorsAsync()
@@ -172,10 +177,64 @@ public class SensorDatabase
     }
     public async Task<SensorReading> GetFinalSensorReadingAsync(string Quantity)
     {
+        // 
         await Init();
         return await database.Table<SensorReading>().Where(s => s.Sensor_Quantity == Quantity)
                     .OrderByDescending(s => s.ID)
                     .FirstOrDefaultAsync();
     }
- 
+    public async Task<int> SaveUserAsync(UserModel user)
+    {
+        // saves a new user
+        await Init();
+        if (DoesUserExistAsync(user.UserName).Result)
+        {
+            return await database.UpdateAsync(user);
+        }
+        else
+        {
+            return await database.InsertAsync(user);
+        }
+    }
+     public async Task<bool> DoesUserExistAsync(string UserName)
+    {
+        await Init();
+        List<UserModel> users = await database.Table<UserModel>().Where(u => u.UserName == UserName).ToListAsync();
+      
+        // that means the user exists
+        if (users.Count>0)
+        return true;
+        else
+        return false;
+    }
+     public async Task<bool> DoesUserExistAsync(string UserName, string Password)
+    {
+        // returns a bool on if the user exists
+        await Init();
+        List<UserModel> users = await database.Table<UserModel>().Where(u => u.UserName == UserName && u.Password == Password).ToListAsync();
+      
+        // that means the user exists
+        if (users.Count>0)
+        return true;
+        else
+        return false;
+    }
+    public async Task<UserModel> GetUserAsync(string UserName, string Password)
+    {
+        // returns a bool on if the login is correct
+        await Init();
+        List<UserModel> users = await database.Table<UserModel>().Where(u => u.UserName == UserName && u.Password == Password).ToListAsync();
+      
+        // that means the user exists
+        return users.ElementAt(0);
+      
+
+    }
+    public async Task<List<UserModel>> GetAllUsers()
+    {
+        // returns all users
+        await Init();
+        return await database.Table<UserModel>().ToListAsync();
+    }
+    
 }
