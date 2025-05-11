@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.UI.View.TrendReportView"
+             Title="TrendReportView">
+    <VerticalStackLayout>
+        <Label 
+            Text="Environmental Trends"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button Text="Return To Main Page"
+                Command="{Binding ReturnCommand}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        <CollectionView x:Name="SensorCollectionView"
+                        ItemsSource="{Binding AnalysisCollection}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Quantity} "
+                               FontSize="Small"/>  
+                        <Label Text="-Av>"
+                               FontSize="Small"
+                               />        
+                        <Label Text="{Binding AverageChange} "
+                               FontSize="Small"
+                               />      
+                         <Label Text="-Total>"
+                               FontSize="Small"
+                               />        
+                        <Label Text="{Binding TotalChange} "
+                               FontSize="Small"
+                               />      
+                         <Label Text="-Highest>"
+                               FontSize="Small"
+                               />        
+                        <Label Text="{Binding Highest} "
+                               FontSize="Small"
+                               />      
+                         <Label Text="-Lowest>"
+                               FontSize="Small"
+                               />        
+                        <Label Text="{Binding Lowest} "
+                               FontSize="Small"
+                               />             
+
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

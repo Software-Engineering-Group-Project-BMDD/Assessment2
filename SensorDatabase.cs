@@ -163,6 +163,13 @@ public class SensorDatabase
             return false;
 
     }
+    public async Task<List<SensorReading>> GetAllReadingsOfQuantity(string quantity)
+    {
+        // this was originally created for the trend report
+        await Init();
+
+        return await database.Table<SensorReading>().Where(s =>  s.Sensor_Quantity == quantity).ToListAsync();
+    }
     public async Task<SensorReading> GetFinalSensorReadingAsync(string Quantity)
     {
         await Init();

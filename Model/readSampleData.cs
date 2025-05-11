@@ -192,8 +192,8 @@ public class readSampleData
                         {
                             await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrogen dioxide", sensor_value=smartParse(values[2]), timestamp = dateString});
                             await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Sulphur dioxide", sensor_value=smartParse(values[3]), timestamp = dateString});
-                            await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "PM2.5 particulate matter (Hourly measured)", sensor_value=smartParse(values[4]), timestamp = dateString});
-                            await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "PM10 particulate matter (Hourly measured)", sensor_value=smartParse(values[5]), timestamp = dateString});
+                            await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Particulate matter <= 2.5 microns in diameter", sensor_value=smartParse(values[4]), timestamp = dateString});
+                            await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Particulate matter <= 10 microns in diameter", sensor_value=smartParse(values[5]), timestamp = dateString});
                             
                         }
                         catch
@@ -294,14 +294,14 @@ public class readSampleData
 
                     // we check if there is a reading from these sensors at this time
 
-                    bool checkReadingExists = await _database.DoesSensorReadingExist(dateString, "Nitrate (mg l-1)");
+                    bool checkReadingExists = await _database.DoesSensorReadingExist(dateString, "Nitrite");
 
                     if (!checkReadingExists)
                     {
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrate (mg l-1)", sensor_value=smartParse(values[2]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrite <mg l-1)", sensor_value=smartParse(values[3]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Phosphate (mg l-1)", sensor_value=smartParse(values[4]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "EC (cfu/100ml)", sensor_value=smartParse(values[5]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrite", sensor_value=smartParse(values[2]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Nitrate", sensor_value=smartParse(values[3]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Phosphate", sensor_value=smartParse(values[4]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Escherichia coli ", sensor_value=smartParse(values[5]), timestamp = dateString});
 
                     }
                 }
@@ -350,14 +350,14 @@ public class readSampleData
                     string dateString = values[0];
 
                     // we check if there is a reading from these sensors at this time
-                    bool checkReadingExists = await _database.DoesSensorReadingExist(dateString, "temperature_2m (¬∞C)");
+                    bool checkReadingExists = await _database.DoesSensorReadingExist(dateString, "Air temperature");
 
                     if (!checkReadingExists)
                     {
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "temperature_2m (¬∞C)", sensor_value=smartParse(values[1]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "relative_humidity_2m (%)", sensor_value=smartParse(values[2]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "wind_speed_10m (m/s)", sensor_value=smartParse(values[3]), timestamp = dateString});
-                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "wind_direction_10m (¬∞)", sensor_value=smartParse(values[4]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Air temperature", sensor_value=smartParse(values[1]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Humidity", sensor_value=smartParse(values[2]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Wind speed", sensor_value=smartParse(values[3]), timestamp = dateString});
+                        await _database.SaveReadingAsync(new SensorReading { Sensor_Quantity = "Wind direction", sensor_value=smartParse(values[4]), timestamp = dateString});
 
                     }
 

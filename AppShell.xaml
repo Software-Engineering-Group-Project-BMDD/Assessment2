@@ -16,5 +16,7 @@
                       ContentTemplate="{DataTemplate views:SensorView}"/>
         <ShellContent Route="SensorStatus"
                 ContentTemplate="{DataTemplate views:SensorStatus}"/>
+        <ShellContent Route="TrendsView"
+                      ContentTemplate="{DataTemplate views:TrendReportView}"/>
 
 </Shell>

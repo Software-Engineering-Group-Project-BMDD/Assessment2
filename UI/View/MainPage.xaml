@@ -11,6 +11,8 @@
                         Command="{Binding NavigateToSensorLocation}"/>
                 <Button Text="View Sensor status"
                         Command="{Binding ViewSensorStatusCommand}"/>
+                <Button Text="View environmental trends"
+                        Command="{Binding NavigateToTrendsCommand}"/>
         </VerticalStackLayout>
 
 </ContentPage>
