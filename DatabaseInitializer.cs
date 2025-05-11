@@ -5,9 +5,9 @@ using Microsoft.Data.Sqlite;
 
 namespace MauiApp1
 {
-    public static class DatabaseInitializer
+    public class DatabaseInitializer : IDatabaseInitializer
     {
-        public static void EnsureDatabaseExists()
+        public void EnsureDatabaseExists()
         {
             var dbPath = DatabaseConnectionManager.GetDatabasePath();
 
@@ -49,8 +49,6 @@ namespace MauiApp1
                     FOREIGN KEY (Role) REFERENCES Role(Role_Id),
                     FOREIGN KEY (Incidence_id) REFERENCES Incidence(incidece_id)
                 )");
-
-                // Add other table creation queries here...
             }
             catch (Exception ex)
             {

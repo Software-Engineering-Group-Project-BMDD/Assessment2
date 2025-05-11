@@ -4,9 +4,9 @@ using Microsoft.Data.Sqlite;
 
 namespace MauiApp1
 {
-    public static class DatabaseRepository
+    public class DatabaseRepository : IDatabaseRepository
     {
-        public static int AddUser(string firstName, string lastName, string address, int roleId)
+        public int AddUser(string firstName, string lastName, string address, int roleId)
         {
             var parameters = new Dictionary<string, object>
             {
@@ -20,7 +20,7 @@ namespace MauiApp1
             return Convert.ToInt32(ExecuteScalar("SELECT last_insert_rowid()"));
         }
 
-        public static SqliteDataReader GetUsersWithRoles()
+        public SqliteDataReader GetUsersWithRoles()
         {
             return ExecuteReader(@"SELECT u.User_id, u.F_Name, u.L_Name, u.Address, r.Role_name 
                                    FROM Users u 

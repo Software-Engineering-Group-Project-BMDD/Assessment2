@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
 using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage; // For FileSystem
+using Microsoft.Data.Sqlite; // For SQLite database operations
 
 namespace MauiApp1.MVVM.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private string _username;
-        private string _password;
+        private string _username = string.Empty; // Initialize to avoid CS8618
+        private string _password = string.Empty; // Initialize to avoid CS8618
         private readonly string _dbPath;
 
         public MainPageViewModel()
@@ -53,7 +55,7 @@ namespace MauiApp1.MVVM.ViewModels
         {
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Please enter both username and password.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Please enter both username and password.", "OK");
                 return;
             }
 
@@ -65,13 +67,13 @@ namespace MauiApp1.MVVM.ViewModels
             bool userExists = await ValUsernameInDatabaseAsync(Username);
             if (userExists)
             {
-                await Application.Current.MainPage.DisplayAlert("Success", "User exists in the database.", "OK");
+                await Shell.Current.DisplayAlert("Success", "User exists in the database.", "OK");
                 // Navigate to ActivityPage.xaml
-                await Application.Current.MainPage.Navigation.PushAsync(new ActivityPage());
+                await Shell.Current.GoToAsync("//ActivityPage");
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "User does not exist in the database.", "OK");
+                await Shell.Current.DisplayAlert("Error", "User does not exist in the database.", "OK");
             }
         }
 
@@ -80,12 +82,12 @@ namespace MauiApp1.MVVM.ViewModels
         {
             if (username.Length < 5 || username.Length > 20)
             {
-                Application.Current.MainPage.DisplayAlert("Invalid Input", "Username must be between 5 and 20 characters.", "OK");
+                Shell.Current.DisplayAlert("Invalid Input", "Username must be between 5 and 20 characters.", "OK");
                 return false;
             }
             if (password.Length < 8)
             {
-                Application.Current.MainPage.DisplayAlert("Invalid Input", "Password must be at least 8 characters long.", "OK");
+                Shell.Current.DisplayAlert("Invalid Input", "Password must be at least 8 characters long.", "OK");
                 return false;
             }
             return true;
@@ -96,9 +98,9 @@ namespace MauiApp1.MVVM.ViewModels
         {
             try
             {
-                using var conn = new Microsoft.Data.Sqlite.SqliteConnection($"Data Source={_dbPath};Version3;");
+                using var conn = new SqliteConnection($"Data Source={_dbPath};Version=3;");
                 await conn.OpenAsync();
-                using var command = new Microsoft.Data.Sqlite.SqliteCommand(
+                using var command = new SqliteCommand(
                     "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password",
                     conn);
                 command.Parameters.AddWithValue("@Username", username);
@@ -115,9 +117,9 @@ namespace MauiApp1.MVVM.ViewModels
         }
 
         // INotifyPropertyChanged implementation
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged; // Nullable to match the interface
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

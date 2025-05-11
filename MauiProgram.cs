@@ -19,8 +19,14 @@ public static class MauiProgram
             });
 #endif
 
-        // Ensure MainPage is registered as the starting page
+        // Register pages
         builder.Services.AddSingleton<MainPage>();
+
+        // Register interfaces and their implementations
+        builder.Services.AddSingleton<IDatabaseConnectionChecker, DatabaseConnectionChecker>();
+        builder.Services.AddSingleton<IDatabaseConnectionManager, DatabaseConnectionManager>();
+        builder.Services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();
+        builder.Services.AddSingleton<IDatabaseRepository, DatabaseRepository>();
 
 #if DEBUG
         builder.Logging.AddDebug();
