@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+MauiApp1.Test/obj
+MauiApp1.Test/bin
