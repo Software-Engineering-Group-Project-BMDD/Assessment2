@@ -37,6 +37,10 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<TrendReportViewModel>();
 		builder.Services.AddSingleton<TrendReportView>();
+
+		builder.Services.AddTransient<IncidentViewModel>();
+		builder.Services.AddSingleton<IncidentView>();
+
 		return builder.Build();
 	}
 }

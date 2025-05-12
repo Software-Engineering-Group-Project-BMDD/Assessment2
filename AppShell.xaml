@@ -20,4 +20,6 @@
                       ContentTemplate="{DataTemplate views:TrendReportView}"/>
         <ShellContent Route="LoginView"
                       ContentTemplate="{DataTemplate views:LoginView}"/>
+        <ShellContent Route="IncidentView"
+                      ContentTemplate="{DataTemplate views:IncidentView}"/>
 </Shell>

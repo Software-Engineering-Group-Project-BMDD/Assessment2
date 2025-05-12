@@ -51,28 +51,28 @@ public partial class LoginViewModel : ObservableObject
 				foundPass=true;
 		}
 
-		DateTime currentTime = DateTime.Now;
-		string timeString = currentTime.ToString("HH:mm:ss");
+
+		string CurrentDateTime = DateTime.Now.ToString("F");
 
 		if( foundName)
 		{
 			if(foundPass)
 			{
 				// log successfull login
-				await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Success", timeStamp = timeString});
+				await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Success", timeStamp = CurrentDateTime});
 				await Shell.Current.GoToAsync("//MainPage");
 			}
 			else
 			{
 				// log failure in login, while username is correct
-				await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Name success, failure", timeStamp = timeString});
+				await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Name success, failure", timeStamp = CurrentDateTime});
 
 			}
 		}
 		else
 		{
 			// log failure in login completly
-			await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Full failure", timeStamp = timeString});
+			await _database.SaveIncidentAsync(new LoginIncedentModel{User = Username, incidentType = "Full failure", timeStamp = CurrentDateTime});
 
 		}
 	}

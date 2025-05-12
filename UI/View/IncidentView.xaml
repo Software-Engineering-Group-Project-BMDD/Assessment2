@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.UI.View.IncidentView"
+             Title="IncidentView">
+    <VerticalStackLayout>
+        <Button Text="Return To Main Page"
+                Command="{Binding ReturnCommand}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        <Button Text="Check for incidents"
+                Command="{Binding CheckCommand}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+        <CollectionView x:Name="SensorCollectionView"
+                        ItemsSource="{Binding Incidents}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding User}"
+                                FontSize="Medium"/>
+                            <Label Text="---"
+                                FontSize="Medium"/>
+                            <Label Text="{Binding timeStamp}"
+                                FontSize="Medium"/>
+                            <Label Text="---"
+                                FontSize="Medium"/>
+                            <Label Text="{Binding incidentType}"
+                                FontSize="Medium"/>
+
+                        </HorizontalStackLayout>
+                        
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
