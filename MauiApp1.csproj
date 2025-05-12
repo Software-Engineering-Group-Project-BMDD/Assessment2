@@ -57,10 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.4" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.60" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.15" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
 		<PackageReference Include="OfficeOpenXml.Core.ExcelPackage" Version="1.0.0" />
 		<PackageReference Include="SQLite" Version="3.13.0" />
 		<PackageReference Include="System.Data.SQLite.Linq" Version="1.0.119" />
@@ -81,6 +80,9 @@
 	  <MauiXaml Update="ManageWaterQsensor.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ManageWeatherSensor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MeteorologicalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -93,6 +95,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
 	  <None Update="SensorAccountsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
