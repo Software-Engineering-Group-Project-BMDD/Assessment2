@@ -59,6 +59,7 @@ public class SensorDatabase
             return;
 
         database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        
         var result = await database.CreateTableAsync<Sensor>();
         var resultReadings = await database.CreateTableAsync<SensorReading>();
         var resultUsers = await database.CreateTableAsync<UserModel>();
