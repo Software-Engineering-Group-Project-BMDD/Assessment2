@@ -15,9 +15,11 @@ namespace MauiApp1.MVVM.ViewModels
         public SensorAccountViewModel()
         {
             StartFirmwareUpdateCommand = new Command(async () => await StartFirmwareUpdateAsync());
+            NavigateCommand = new Command<string>(async (pageName) => await NavigateToPageAsync(pageName));
             FirmwareUpdateStatus = "Idle";
         }
 
+        // Properties
         public double FirmwareUpdateProgress
         {
             get => _firmwareUpdateProgress;
@@ -48,8 +50,11 @@ namespace MauiApp1.MVVM.ViewModels
             }
         }
 
+        // Commands
         public ICommand StartFirmwareUpdateCommand { get; }
+        public ICommand NavigateCommand { get; }
 
+        // Methods
         private async Task StartFirmwareUpdateAsync()
         {
             IsFirmwareUpdating = true;
@@ -77,6 +82,15 @@ namespace MauiApp1.MVVM.ViewModels
             IsFirmwareUpdating = false;
         }
 
+        private async Task NavigateToPageAsync(string pageName)
+        {
+            if (!string.IsNullOrEmpty(pageName))
+            {
+                await Shell.Current.GoToAsync(pageName);
+            }
+        }
+
+        // Notify property changes
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

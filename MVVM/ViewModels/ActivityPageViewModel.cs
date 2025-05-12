@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Compat;
 
 namespace MauiApp1.MVVM.ViewModels
 {
@@ -12,9 +12,6 @@ namespace MauiApp1.MVVM.ViewModels
         {
             // Single command for navigation
             NavigateCommand = new Command<string>(async (pageName) => await NavigateToPageAsync(pageName));
-
-            // Refresh command (if needed)
-            RefreshCommand = new Command(RefreshData);
         }
 
         private async Task NavigateToPageAsync(string pageName)

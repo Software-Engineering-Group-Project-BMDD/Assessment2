@@ -20,12 +20,35 @@
                 <ImageButton Source="sensor_icon.png"
                              HeightRequest="40"
                              WidthRequest="40" />
+                <Label Text="Water Quality Sensor"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       <Button Text="Go to Manage Water Quality Sensor" 
+                       Command="{Binding NavigateCommand}" 
+                       CommandParameter="ManageWaterQsensor" />
+                    />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="sensor_icon.png"
+                 HeightRequest="40"
+                 WidthRequest="40"
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="ManageAirQsensor"/>
                 <Label Text="Air Quality Sensor"
+           TextColor="White"
+           VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="sensor_icon.png"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             Command="{Binding NavigateCommand}" 
+                             CommandParameter="ManageAirQsensor"/>
+                <Label Text="Weather Sensor"
                        TextColor="White"
                        VerticalOptions="Center" />
-            </HorizontalStackLayout>
 
-            <!-- Firmware Update Section -->
+                <!-- Firmware Update Section -->
             <Button Text="Firmware updates check"
                     TextColor="White"
                     BackgroundColor="Transparent"

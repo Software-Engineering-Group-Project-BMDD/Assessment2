@@ -1,9 +1,13 @@
-namespace MauiApp1;
+using MauiApp1.ViewModels;
 
-public partial class AirQualityPage : ContentPage
+namespace MauiApp1
 {
-	public AirQualityPage()
-	{
-		InitializeComponent();
-	}
+    public partial class AirQualityPage : ContentPage
+    {
+        public AirQualityPage()
+        {
+            InitializeComponent();
+            BindingContext = new AirQualityViewModel();
+        }
+    }
 }
