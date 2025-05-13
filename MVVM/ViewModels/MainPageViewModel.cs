@@ -8,19 +8,27 @@ using Microsoft.Data.Sqlite; // For SQLite database operations
 
 namespace MauiApp1.MVVM.ViewModels
 {
+    /// <summary>
+    /// ViewModel for the MainPage, handling user login and database validation.
+    /// </summary>
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private string _username = string.Empty; // Initialize to avoid CS8618
         private string _password = string.Empty; // Initialize to avoid CS8618
         private readonly string _dbPath;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainPageViewModel"/> class.
+        /// </summary>
         public MainPageViewModel()
         {
             _dbPath = Path.Combine(FileSystem.AppDataDirectory, "Assessment2Db.db");
             LoginCommand = new Command(async () => await LoginAsync());
         }
 
-        // Properties for data binding
+        /// <summary>
+        /// Gets or sets the username entered by the user.
+        /// </summary>
         public string Username
         {
             get => _username;
@@ -34,6 +42,9 @@ namespace MauiApp1.MVVM.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets or sets the password entered by the user.
+        /// </summary>
         public string Password
         {
             get => _password;
@@ -47,10 +58,14 @@ namespace MauiApp1.MVVM.ViewModels
             }
         }
 
-        // Command for the Login button
+        /// <summary>
+        /// Gets the command executed when the user attempts to log in.
+        /// </summary>
         public ICommand LoginCommand { get; }
 
-        // Login logic
+        /// <summary>
+        /// Handles the login logic, including input validation and database verification.
+        /// </summary>
         private async Task LoginAsync()
         {
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
@@ -77,7 +92,12 @@ namespace MauiApp1.MVVM.ViewModels
             }
         }
 
-        // Validation logic
+        /// <summary>
+        /// Validates the username and password input.
+        /// </summary>
+        /// <param name="username">The username entered by the user.</param>
+        /// <param name="password">The password entered by the user.</param>
+        /// <returns>True if the input is valid; otherwise, false.</returns>
         private bool ValidateInput(string username, string password)
         {
             if (username.Length < 5 || username.Length > 20)
@@ -93,7 +113,11 @@ namespace MauiApp1.MVVM.ViewModels
             return true;
         }
 
-        // Database validation
+        /// <summary>
+        /// Validates the username against the database asynchronously.
+        /// </summary>
+        /// <param name="username">The username to validate.</param>
+        /// <returns>True if the username exists in the database; otherwise, false.</returns>
         private async Task<bool> ValUsernameInDatabaseAsync(string username)
         {
             try
@@ -116,9 +140,15 @@ namespace MauiApp1.MVVM.ViewModels
             }
         }
 
-        // INotifyPropertyChanged implementation
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged; // Nullable to match the interface
 
+        /// <summary>
+        /// Notifies listeners that a property value has changed.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -1,15 +1,12 @@
+using Microsoft.Maui.Controls;
 
-namespace MauiApp1;
-
-public partial class ManageAirQsensor : ContentPage
+namespace MauiApp1
 {
-	public ManageAirQsensor()
-	{
-        InitializeComponent();
-	}
-
-    private void InitializeComponent()
+    public partial class ManageAirQsensor : ContentPage
     {
-        throw new NotImplementedException();
+        public ManageAirQsensor()
+        {
+            InitializeComponent();
+        }
     }
 }
