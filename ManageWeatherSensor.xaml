@@ -1,0 +1,37 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.MVVM.ViewModels"
+             x:Class="MauiApp1.ManageWeatherSensor"
+             Title="Manage Weather Sensor"
+             BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <vm:ManageWeatherSensorViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="Weather Sensor" FontSize="24" TextColor="White" HorizontalOptions="Center" />
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="Sensitivity" FontSize="18" TextColor="White" VerticalOptions="Center" />
+            <Picker Title="Dropdown 1"
+                    WidthRequest="120"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    ItemsSource="{Binding NumberOptions}"
+                    SelectedItem="{Binding SelectedSensitivity1, Mode=TwoWay}" />
+            <Picker Title="Dropdown 2"
+                    WidthRequest="120"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    ItemsSource="{Binding NumberOptions}"
+                    SelectedItem="{Binding SelectedSensitivity2, Mode=TwoWay}" />
+        </HorizontalStackLayout>
+        <Label Text="Air pollutant sensor" FontSize="18" TextColor="White" HorizontalOptions="Center" />
+        <Button Text="Save Config"
+                FontSize="18"
+                BackgroundColor="Gray"
+                TextColor="White"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Command="{Binding SaveCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

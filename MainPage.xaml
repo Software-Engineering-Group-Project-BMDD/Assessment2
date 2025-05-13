@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.ActivityPage"
+             x:Class="MauiApp1.MainPage"
              Title="Login">
     <ScrollView>
         <VerticalStackLayout
@@ -18,15 +18,15 @@
 
             <!-- Username Entry -->
             <Entry 
-                x:Name="Username_Txtbox"
                 Placeholder="Username"
+                Text="{Binding Username}"
                 Keyboard="Text"
                 HorizontalOptions="Fill" />
 
             <!-- Password Entry -->
             <Entry 
-                x:Name="Password_Txtbox"
                 Placeholder="Password"
+                Text="{Binding Password}"
                 IsPassword="True"
                 Keyboard="Text"
                 HorizontalOptions="Fill" />
@@ -34,20 +34,11 @@
             <!-- Login Button -->
             <Button 
                 Text="Login"
-                x:Name="Login_Btn"
+                Command="{Binding LoginCommand}"
                 BackgroundColor="#007AFF"
                 TextColor="White"
                 CornerRadius="5"
                 HorizontalOptions="Fill" />
-
-            <!-- Password Reset Button -->
-            <Button 
-                Text="Forgot Password?"
-                x:Name="Reset_Password_Btn"
-                BackgroundColor="Transparent"
-                TextColor="#007AFF"
-                FontAttributes="Italic"
-                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>

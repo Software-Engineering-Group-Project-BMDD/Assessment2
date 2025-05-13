@@ -1,0 +1,54 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.MVVM.ViewModels"
+             x:Class="MauiApp1.ManageAirQsensor"
+             Title="Manage Air Quality Sensor"
+             BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <vm:ManageAirQsensorViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <!-- Title Text -->
+        <Label Text="Air Quality Sensor"
+               FontSize="24"
+               TextColor="White"
+               HorizontalOptions="Center" />
+
+        <!-- Sensitivity Section -->
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="Sensitivity"
+                   FontSize="18"
+                   TextColor="White"
+                   VerticalOptions="Center" />
+            <Picker Title="Dropdown 1"
+                    WidthRequest="120"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    ItemsSource="{Binding NumberOptions}"
+                    SelectedItem="{Binding SelectedSensitivity1, Mode=TwoWay}" />
+            <Picker Title="Dropdown 2"
+                    WidthRequest="120"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    ItemsSource="{Binding NumberOptions}"
+                    SelectedItem="{Binding SelectedSensitivity2, Mode=TwoWay}" />
+        </HorizontalStackLayout>
+
+        <!-- pH Sensor Section -->
+        <Label Text="pH sensor"
+               FontSize="18"
+               TextColor="White"
+               HorizontalOptions="Center" />
+
+        <!-- Button -->
+        <Button Text="Save Config"
+                FontSize="18"
+                BackgroundColor="Gray"
+                TextColor="White"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Command="{Binding SaveCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

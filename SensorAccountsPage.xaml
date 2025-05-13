@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SensorAccountsPage"
+             Title="SensorAccountsPage"
+             BackgroundColor="Black">
+    <Grid>
+        <!-- Profile Icon -->
+        <Image Source="profile_icon.png"
+               HorizontalOptions="End"
+               VerticalOptions="Start"
+               Margin="10"
+               HeightRequest="40"
+               WidthRequest="40" />
+
+        <!-- Main Content -->
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Sensor Items -->
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="sensor_icon.png"
+                             HeightRequest="40"
+                             WidthRequest="40" />
+                <Label Text="Water Quality Sensor"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       <Button Text="Go to Manage Water Quality Sensor" 
+                       Command="{Binding NavigateCommand}" 
+                       CommandParameter="ManageWaterQsensor" />
+                    />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="sensor_icon.png"
+                 HeightRequest="40"
+                 WidthRequest="40"
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="ManageAirQsensor"/>
+                <Label Text="Air Quality Sensor"
+           TextColor="White"
+           VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <ImageButton Source="sensor_icon.png"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             Command="{Binding NavigateCommand}" 
+                             CommandParameter="ManageAirQsensor"/>
+                <Label Text="Weather Sensor"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+
+                <!-- Firmware Update Section -->
+            <Button Text="Firmware updates check"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    CornerRadius="5"
+                    HorizontalOptions="Center"
+                    Command="{Binding StartFirmwareUpdateCommand}" />
+
+            <ProgressBar Progress="{Binding FirmwareUpdateProgress}"
+                         IsVisible="{Binding IsFirmwareUpdating}"
+                         HeightRequest="10"
+                         BackgroundColor="Gray"
+                         ProgressColor="Green"
+                         HorizontalOptions="FillAndExpand" />
+
+            <Label Text="{Binding FirmwareUpdateStatus}"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

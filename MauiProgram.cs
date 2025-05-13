@@ -4,22 +4,34 @@ namespace MauiApp1;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
-		builder.Services.AddSingleton<MainPage>();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
 
-#if DEBUG
-		builder.Logging.AddDebug();
+        // Platform guards to ensure compatibility
+#if IOS || MACCATALYST || ANDROID
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 #endif
 
-		return builder.Build();
-	}
+        // Register pages
+        builder.Services.AddSingleton<MainPage>();
+
+        // Register interfaces and their implementations
+        builder.Services.AddSingleton<IDatabaseConnectionChecker, DatabaseConnectionChecker>();
+        builder.Services.AddSingleton<IDatabaseConnectionManager, DatabaseConnectionManager>();
+        builder.Services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();
+        builder.Services.AddSingleton<IDatabaseRepository, DatabaseRepository>();
+
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
+
+        return builder.Build();
+    }
 }
