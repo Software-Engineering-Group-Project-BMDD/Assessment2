@@ -1,14 +1,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MauiApp1.MVVM.ViewModels"
-             x:Class="MauiApp1.ManageWaterQsensor"
-             Title="Manage Water Quality Sensor"
+             x:Class="MauiApp1.ManageWeatherSensor"
+             Title="Manage Weather Sensor"
              BackgroundColor="Black">
     <ContentPage.BindingContext>
-        <vm:ManageWaterQsensorViewModel />
+        <vm:ManageWeatherSensorViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="Text" FontSize="24" TextColor="White" HorizontalOptions="Center" />
+        <Label Text="Weather Sensor" FontSize="24" TextColor="White" HorizontalOptions="Center" />
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
             <Label Text="Sensitivity" FontSize="18" TextColor="White" VerticalOptions="Center" />
             <Picker Title="Dropdown 1"
